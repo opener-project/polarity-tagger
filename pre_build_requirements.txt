@@ -1,0 +1,2 @@
+git+ssh://git@github.com/opener-project/VU-kaf-parser.git#egg=VUKafParserPy
+git+ssh://git@github.com/opener-project/VU-sentiment-lexicon.git#egg=VUSentimentLexicon

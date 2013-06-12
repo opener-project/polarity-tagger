@@ -15,7 +15,9 @@ stdout, stderr, process = kernel.run(input)
 if process.success?
   puts stdout
 
-  STDERR.puts(stderr) unless stderr.empty?
+  if kernel.option_parser.logging? and !stderr.empty?
+    STDERR.puts(stderr)
+  end
 else
   abort stderr
 end
