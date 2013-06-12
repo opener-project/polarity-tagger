@@ -33,3 +33,13 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+Gemfile.lock
+tmp/*
+
+# Ignore the Python package files.
+core/site-packages/pre_build/*
+core/site-packages/pre_install/*
+
+# Keep these files.
+!.gitkeep
