@@ -35,19 +35,3 @@ def verify_requirements
   require_version('python', python_version, '2.7.0')
   require_executable('pip')
 end
-
-##
-# Installs a set of Python packages in a given directory based on a
-# requirements file. If the directory is not empty this process is aborted.
-#
-# @param [String] file The requirements file to install.
-# @param [String] directory The name of the directory in core/site-packages to
-#  install the packages in to.
-#
-def install_python_packages(requirements, directory)
-  path = File.join(PYTHON_SITE_PACKAGES, directory)
-
-  return unless directory_contents(path).empty?
-
-  pip_install(requirements, path)
-end

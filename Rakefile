@@ -17,7 +17,12 @@ task :requirements do
 end
 
 desc 'Cleans up the repository'
-task :clean => ['clean:pyc', 'clean:tmp', 'clean:python_packages', 'clean:gems']
+task :clean => [
+  'python:clean:bytecode',
+  'python:clean:packages',
+  'clean:tmp',
+  'clean:gems'
+]
 
 desc 'Alias for python:compile'
 task :compile => 'python:compile'
@@ -28,8 +33,10 @@ task :test => :compile do
 end
 
 desc 'Performs preparations for building the Gem'
-task :before_build => [:requirements, 'clean:pyc'] do
-  install_python_packages(PRE_BUILD_REQUIREMENTS, 'pre_build')
+task :before_build => [:requirements, 'python:clean:bytecode'] do
+  path = File.join(PYTHON_SITE_PACKAGES, 'pre_build')
+
+  install_python_packages(PRE_BUILD_REQUIREMENTS, path)
 end
 
 task :build   => :before_build
