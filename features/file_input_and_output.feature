@@ -11,4 +11,5 @@ Feature: Using files as input and output
     | language | input_file            | output_file            |
     | French   | fr_positive_input.kaf | fr_positive_output.kaf |
     | French   | fr_negative_input.kaf | fr_negative_output.kaf |
-
+    | Dutch    | nl_positive_input.kaf | nl_positive_output.kaf |
+    | Dutch    | nl_negative_input.kaf | nl_negative_output.kaf |
