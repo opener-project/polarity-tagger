@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/opener/polarity_tagger'
+
+# STDIN.tty? returns `false` if data is being piped into the current process.
+if STDIN.tty?
+  input = nil
+else
+  input = STDIN.read
+end
+
+kernel                  = Opener::PolarityTagger.new(:args => ARGV)
+stdout, stderr, process = kernel.run(input)
+
+if process.success?
+  puts stdout
+
+  STDERR.puts(stderr) unless stderr.empty?
+else
+  abort stderr
+end

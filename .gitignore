@@ -1,45 +1,19 @@
+# Python related files.
 *.py[cod]
-
-# C extensions
-*.so
-
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-lib
-lib64
-
-# Installer logs
 pip-log.txt
-
-# Unit test / coverage reports
-.coverage
-.tox
-nosetests.xml
-
-# Translations
-*.mo
-
-# Mr Developer
 .mr.developer.cfg
 .project
 .pydevproject
 
-Gemfile.lock
-tmp/*
-
 # Ignore the Python package files.
 core/site-packages/pre_build/*
 core/site-packages/pre_install/*
+
+.coverage
+.tox
+nosetests.xml
+Gemfile.lock
+tmp/*
 
 # Keep these files.
 !.gitkeep
