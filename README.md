@@ -65,7 +65,7 @@ where X is one of the following two:
 
 * `pre_build`: contains packages that are installed before building the Gem,
   these packages are shipped with the Gem
-* `pre_insatll`: contains packages that are installed in to this directory upon
+* `pre_install`: contains packages that are installed in to this directory upon
   installing the Gem. This directory should exclusively be used for compiled
   Python packages such as lxml.
 
