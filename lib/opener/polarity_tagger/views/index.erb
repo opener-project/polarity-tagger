@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="markdown.css" />
+
+        <title>Polarity Tagger Webservice</title>
+    </head>
+    <body>
+        <h1>Polarity Tagger Webservice</h1>
+
+        <p>
+        * required
+
+        <br />
+
+        ** When entering a value no response will be displayed in the browser.
+        </p>
+
+        <form action="/" method="POST">
+            <div>
+                <label for="text">KAF input *</label>
+                <br />
+
+                <textarea id="text" name="text" cols="50" rows="10"></textarea>
+            </div>
+
+            <div>
+                <label for="callbacks">Callback URL (**)</label>
+                <br />
+
+                <input id="callbacks" type="text" name="callbacks" />
+            </div>
+
+            <div>
+                <label for="error_callback">Error Callback</label>
+                <br />
+
+                <input id="error_callback" type="text" name="error_callback" />
+            </div>
+
+            <input type="submit" value="Submit" />
+        </form>
+
+        <h2>Actions</h2>
+
+        <dl>
+            <dt>GET /</dt>
+            <dd>Shows this page</dd>
+
+            <dt>POST /</dt>
+            <dd>Submits a KAF document</dd>
+        </dl>
+
+        <h2>Parameters</h2>
+
+        <dl>
+            <dt>text *</dt>
+            <dd>The KAF document to tag.</dd>
+
+            <dt>callbacks</dt>
+            <dd>A collection of callback URLs that are processed as a chain.</dd>
+
+            <dt>error_callback</dt>
+            <dd>Errors are submitted to this URL in the "error" field.</dd>
+        </dl>
+    </body>
+</html>
