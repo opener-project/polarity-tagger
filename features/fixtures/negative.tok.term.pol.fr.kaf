@@ -153,7 +153,7 @@
         <!--séjour-->
         <target id="w3"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="de" morphofeat="P" pos="P" tid="t4" type="close">
       <span>
@@ -216,14 +216,14 @@
         <!--a-->
         <target id="w13"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="avoir" morphofeat="VKms" pos="V" tid="t14" type="open">
       <span>
         <!--eu-->
         <target id="w14"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="beaucoup" morphofeat="ADV" pos="G" tid="t15" type="open">
       <span>
@@ -261,7 +261,6 @@
         <!--électricités-->
         <target id="w20"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="," morphofeat="," pos="O" tid="t21" type="close">
       <span>
@@ -300,7 +299,7 @@
         <!--grave-->
         <target id="w26"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="." morphofeat="." pos="O" tid="t27" type="close">
       <span>
@@ -325,7 +324,7 @@
         <!--connexion-->
         <target id="w30"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="wifi" morphofeat="NPms" pos="N" tid="t31" type="open">
       <span>
@@ -338,7 +337,7 @@
         <!--est-->
         <target id="w32"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="gratuit" morphofeat="Ams" pos="G" tid="t33" type="open">
       <span>
@@ -351,7 +350,7 @@
         <!--est-->
         <target id="w34"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="accessible" morphofeat="Ams" pos="G" tid="t35" type="open">
       <span>
@@ -391,7 +390,7 @@
         <!--lente-->
         <target id="w40"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t41" type="close">
       <span>
@@ -435,7 +434,7 @@
         <!--est-->
         <target id="w47"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="obliger" morphofeat="VKms" pos="V" tid="t48" type="open">
       <span>
@@ -461,7 +460,7 @@
         <!--fois-->
         <target id="w51"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="," morphofeat="," pos="O" tid="t52" type="close">
       <span>
@@ -480,7 +479,7 @@
         <!--fermer-->
         <target id="w54"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="le" morphofeat="Dfp" pos="D" tid="t55" type="close">
       <span>
@@ -493,7 +492,7 @@
         <!--pages-->
         <target id="w56"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t57" type="close">
       <span>
@@ -506,7 +505,7 @@
         <!--relancer-->
         <target id="w58"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="en" morphofeat="P" pos="P" tid="t59" type="close">
       <span>
@@ -532,7 +531,6 @@
         <!--infos-->
         <target id="w62"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="de" morphofeat="P" pos="P" tid="t63" type="close">
       <span>
@@ -545,7 +543,7 @@
         <!--connexion-->
         <target id="w64"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="à" morphofeat="P" pos="P" tid="t65" type="close">
       <span>
@@ -577,7 +575,7 @@
         <!--fois-->
         <target id="w69"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="," morphofeat="," pos="O" tid="t70" type="close">
       <span>
@@ -663,7 +661,7 @@
         <!--trouve-->
         <target id="w83"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="rarement" morphofeat="ADV" pos="G" tid="t84" type="open">
       <span>
@@ -714,7 +712,7 @@
         <!--faisait-->
         <target id="w91"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="déjà" morphofeat="ADV" pos="G" tid="t92" type="open">
       <span>
@@ -753,7 +751,7 @@
         <!--devait-->
         <target id="w97"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="se" morphofeat="CL3ms" pos="Q" tid="t98" type="close">
       <span>
@@ -842,7 +840,7 @@
         <!--faire-->
         <target id="w111"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="couler" morphofeat="VW" pos="V" tid="t112" type="open">
       <span>
