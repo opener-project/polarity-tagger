@@ -1,62 +1,98 @@
-VU-polarity-tagger-basic_ALL-LANGS_kernel
-==================================
+# Polarity Tagger
 
-This module implements a polarity tagger for all the languages of the Opener Project (Dutch, German, English, French, Italian and Spanish). The language
-is determined by the "xml:lang" attribute in the input KAF file. Depending on the value of this attribute,
-the corresponding lexicon will be loaded.
+This repository contains the source code for the OpeNER polarity tagger. This
+polarity tagger supports the following languages:
 
-Requirements
------------
-* VUKafParserPy: parser in python for KAF files
-* VUSentimentLexicon: library to handle the lexicons (in xml format). 
-* lxml: library for processing xml in python
+* Dutch
+* German
+* English
+* French
+* Italian
+* Spanish
 
+## Requirements
 
-Installation
------------
-This module implements a polarity tagger for all the OpeNER languages, but does not contain the lexical resources and lexicons. These lexicons are
-contained in another repository which acts as a library for loading and querying the lexicons, the VU-sentiment-lexicon (https://github.com/opener-project/VU-sentiment-lexicon).
-This library needs to be installed before using the polarity tagger. The detailed instructions are in the README of that repository, but briefly:
+* Python 2.7.0 or newer
+* Ruby 1.9.2 or newer
+* pip
+* libxml2
 
-````shell
-git clone git@github.com:opener-project/VU-sentiment-lexicon.git
-cd VU-sentiment-lexicon
-sudo python setup.py install
-````
+## Installation
 
-With these commands we will have the repository installed in our machine and available to be used for other repositories. Also the VUKafParserPy is required to parse KAF files,
-which is contained on the repository https://github.com/opener-project/VU-kaf-parser. For the installation of this library:
+Using Bundler:
 
-````shell
-git clone git@github.com:opener-project/VU-kaf-parser.git
-cd VU-kaf-parser
-sudo python setup.py install
-````
+    gem 'opener-polarity-tagger',
+      :git    => 'git@github.com:opener-project/polarity-tagger.git',
+      :branch => 'master'
 
-The last step is to install the library lxml. If you have pip installed on your machine, you can install easily lxml by running:
-````shell
-pip install lxml
-````
+Using `specific_install`:
 
-Finally for the polarity tagger there is no need of specific installation, just clone the repository to your local machine and begin using it.
-````
-git clone git@github.com:opener-project/VU-polarity-tagger-basic_ALL-LANGS_kernel.git
-````
+    gem install specific_install
+    gem specific_install opener-polarity-tagger \
+        -l https://github.com/opener-project/polarity-tagger.git
 
+Using regular RubyGems (once the Gem is available):
 
-Usage
-----
+    gem install opener-polarity-tagger
 
-The input KAF file has to be annotated with at least the term layer (with pos information).
-Correct input files for this module are the output KAF files from the POS tagger modules.
+## Usage
 
-To tag an input KAF file example.kaf with polarities you can run:
-````shell
-$ cat example.kaf | core/poltagger-basic-multi.py > output.with.polarities.kaf
-````
+Tagging a KAF file:
 
-Contact
-------  
-* Ruben Izquierdo
-* Vrije University of Amsterdam
-* ruben.izquierdobevia@vu.nl
+    cat some_input_file.kaf | polarity-tagger
+
+## Contributing
+
+First make sure all the required dependencies are installed:
+
+    bundle install
+
+Then download the required Python code:
+
+    rake compile
+
+Once this is done continue reading the sections below to get a better
+understanding about the repository structure.
+
+## Structure
+
+This repository comes in two parts: a collection of Python source files and
+Ruby source code. The Python code can be found in `core/`, the Ruby code can be
+found in the other directories (e.g. `lib/`).
+
+Required Python packages are installed locally in to `core/site-packages/X`
+where X is one of the following two:
+
+* `pre_build`: contains packages that are installed before building the Gem,
+  these packages are shipped with the Gem
+* `pre_insatll`: contains packages that are installed in to this directory upon
+  installing the Gem. This directory should exclusively be used for compiled
+  Python packages such as lxml.
+
+There are also two requirements files for pip:
+
+* `pre_build_requirements.txt`: installs the requirements for the `pre_build`
+  directory.
+* `pre_install_requirements.txt`: installs the requirements for the
+  `pre_install` directory.
+
+To easily install all the required dependencies (required for running the tests
+for example) run the following:
+
+    rake compile
+
+This will take care of verifying the requirements and downloading and
+installing the Python packages.
+
+## Testing
+
+To run the tests (which are powered by Cucumber), simply run the following:
+
+    rake
+
+This will take care of verifying the requirements, installing the Python code
+and running the tests.
+
+For more information on the available Rake tasks run the following:
+
+    rake -T
