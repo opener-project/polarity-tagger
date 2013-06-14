@@ -2,6 +2,11 @@
 
 require_relative '../lib/opener/polarity_tagger'
 
+cli = Opener::PolarityTagger::CLI.new(:args => ARGV)
+
+cli.run(STDIN.tty? ? nil : STDIN.read)
+
+=begin
 # STDIN.tty? returns `false` if data is being piped into the current process.
 if STDIN.tty?
   input = nil
@@ -21,3 +26,4 @@ if process.success?
 else
   abort stderr
 end
+=end

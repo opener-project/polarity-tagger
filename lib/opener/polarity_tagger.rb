@@ -2,57 +2,54 @@ require 'open3'
 require 'optparse'
 
 require_relative 'polarity_tagger/version'
-require_relative 'polarity_tagger/option_parser'
+require_relative 'polarity_tagger/cli'
 
 module Opener
   ##
-  # Ruby wrapper around the Python polarity tagger.
+  # Ruby wrapper around the Python based polarity tagger.
   #
-  # @!attribute [r] args
-  #  @return [Array]
   # @!attribute [r] options
   #  @return [Hash]
-  # @!attribute [r] option_parser
-  #  @return [OptionParser]
   #
   class PolarityTagger
-    attr_reader :args, :options, :option_parser
+    attr_reader :options
+
+    ##
+    # Hash containing the default options to use.
+    #
+    # @return [Hash]
+    #
+    DEFAULT_OPTIONS = {
+      :args => []
+    }.freeze
 
     ##
     # @param [Hash] options
     #
-    # @option options [Array] :args The commandline arguments to pass to the
-    #  underlying Python script.
+    # @option options [Array] :args Collection of arbitrary arguments to pass
+    #  to the underlying kernel.
     #
     def initialize(options = {})
-      @args          = options.delete(:args) || []
-      @options       = options
-      @option_parser = OptionParser.new
+      @options = DEFAULT_OPTIONS.merge(options)
     end
 
     ##
-    # Builds the command used to execute the kernel.
+    # Returns a String containing the command to use for executing the kernel.
     #
     # @return [String]
     #
     def command
-      return "python -E -O #{kernel} #{args.join(' ')}"
+      return "python -E -O #{kernel} #{options[:args].join(' ')}"
     end
 
     ##
-    # Runs the command and returns the output of STDOUT, STDERR and the process
-    # information.
+    # Processes the input and returns an Array containing the output of STDOUT,
+    # STDERR and an object containing process information.
     #
-    # @param [String] input The input to process.
+    # @param [String] input The text of which to detect the language.
     # @return [Array]
     #
     def run(input)
-      option_parser.parse(args)
-
-      if !input or input.empty?
-        option_parser.show_help
-      end
-
       return Open3.capture3(command, :stdin_data => input)
     end
 
