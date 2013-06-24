@@ -43,10 +43,12 @@ module Opener
           halt(400, 'No KAF specified')
         end
 
-        if params[:callbacks] and !params[:callbacks].strip.empty?
-          process_async
-        else
+        callbacks = extract_callbacks(params[:callbacks])
+        
+        if callbacks.empty?
           process_sync
+        else
+          process_async(callbacks)
         end
       end
 
@@ -68,10 +70,9 @@ module Opener
       ##
       # Processes the request asynchronously.
       #
-      def process_async
-        callbacks = params[:callbacks]
-        callbacks = [callbacks] unless callbacks.is_a?(Array)
-
+      # @param [Array] callbacks The callback URLs to use.
+      #
+      def process_async(callbacks)
         Thread.new do
           tag_polarity_async(params[:text], callbacks, params[:error_callback])
         end
@@ -115,6 +116,7 @@ module Opener
         url = callbacks.shift
 
         logger.info("Submitting results to #{url}")
+        logger.info("Using callback URLs: #{callbacks.join(', ')}")
 
         begin
           process_callback(url, output, callbacks)
@@ -133,7 +135,7 @@ module Opener
       def process_callback(url, text, callbacks)
         HTTPClient.post(
           url,
-          :body => {:text => text, :callbacks => callbacks, :kaf => true}
+          :body => {:text => text, :'callbacks[]' => callbacks, :kaf => true}
         )
       end
 
@@ -144,6 +146,19 @@ module Opener
       def submit_error(url, message)
         HTTPClient.post(url, :body => {:error => message})
       end
+      
+      ##
+      # Returns an Array containing the callback URLs, ignoring empty values.
+      #
+      # @param [Array|String] input
+      # @return [Array]
+      #
+      def extract_callbacks(input)
+        callbacks = input.compact.reject(&:empty?)
+
+        return callbacks
+      end
+      
     end # Server
   end # PolarityTagger
 end # Opener

@@ -90,8 +90,9 @@ if __name__ == '__main__':
     acc_polarity = defaultdict(int)
 
     for term in terms:
-
-      lemma = term.getLemma().lower()
+      lemma = term.getLemma()
+      if lemma!=None:
+        lemma = lemma.lower()
 
       kaf_pos = term.getPos()
 
