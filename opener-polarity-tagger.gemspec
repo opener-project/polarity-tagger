@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files  = gem.files.grep(%r{^(test|spec|features)/})
   gem.extensions  = ['ext/hack/Rakefile']
 
-  gem.add_dependency 'opener-build-tools'
+  gem.add_dependency 'opener-build-tools', ['>= 0.2.7']
   gem.add_dependency 'rake'
   gem.add_dependency 'sinatra'
   gem.add_dependency 'httpclient'
