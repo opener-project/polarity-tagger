@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rake'
   gem.add_dependency 'sinatra'
   gem.add_dependency 'httpclient'
+  gem.add_dependency 'opener-webservice'
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'cucumber'

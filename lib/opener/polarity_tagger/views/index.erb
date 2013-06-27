@@ -1,67 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link type="text/css" rel="stylesheet" href="markdown.css" />
+  <head>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="markdown.css"/>
+    <title>Polarity Tagger Webservice</title>
+  </head>
+  <body>
+    <h1>Polarity Tagger Web Service</h1>
 
-        <title>Polarity Tagger Webservice</title>
-    </head>
-    <body>
-        <h1>Polarity Tagger Webservice</h1>
+    <h2>Example Usage</h2>
 
-        <p>
-        * required
+    <p>
+      <pre>polarity-tagger-server start</pre>
+      <pre></pre>
+    </p>
 
+    <h2>Try the webservice</h2>
+
+    <p>* required</p>
+    <p>** When entering a value no response will be displayed in the browser.</p>
+
+    <form action="<%=url("/")%>" method="POST">
+      <div>
+        <label for="input"/>Type your text here*</label>
+        <br/>
+
+        <textarea name="input" id="text" rows="10" cols="50"/></textarea>
+      </div>
+
+      <% 10.times do |t| %>
+      <div>
+        <label for="callbacks">Callback URL <%=t+1%>(**)</label>
         <br />
 
-        ** When entering a value no response will be displayed in the browser.
-        </p>
+        <input id="callbacks" type="text" name="callbacks[]" />
+      </div>
+      <% end %>
 
-        <form action="/" method="POST">
-            <div>
-                <label for="text">KAF input *</label>
-                <br />
 
-                <textarea id="text" name="text" cols="50" rows="10"></textarea>
-            </div>
+      <div>
+        <label for="error_callback">Error Callback</label>
+        <br />
 
-            <div>
-                <label for="callbacks">Callback URL (**)</label>
-                <br />
+        <input id="error_callback" type="text" name="error_callback" />
+      </div>
+      <input type="submit" value="Submit" />
+    </form>
 
-                <input id="callbacks" type="text" name="callbacks" />
-            </div>
+    <h2>Actions</h2>
 
-            <div>
-                <label for="error_callback">Error Callback</label>
-                <br />
+    <p>
+      <dl>
+        <dt>POST /</dt>
+        <dd>Tag the input tokenized text. See arguments listing for more options.</dd>
+        <dt>GET /</dt>
+        <dd>Show this page</dd>
+      </dl>
+    </p>
 
-                <input id="error_callback" type="text" name="error_callback" />
-            </div>
+    <h2>Arguments</h2>
 
-            <input type="submit" value="Submit" />
-        </form>
+    <p> The webservice takes the following arguments: </p>
+    <p>* required</p>
 
-        <h2>Actions</h2>
+    <dl>
+      <dt>text*</dt>
+      <dd>The input text in KAF format. Sample KAF input:</dd>
+      <pre></pre>
 
-        <dl>
-            <dt>GET /</dt>
-            <dd>Shows this page</dd>
+      <dt>callbacks</dt>
+      <dd>
+            You can provide a list of callback urls. If you provide callback urls
+            the POS tagger will run as a background job and a callback
+            with the results will be performed (POST) to the first url in the callback
+            list. The other urls in callback list will be provided in the "callbacks"
+            argument.<br/><br/>
+            Using callback you can chain together several OpeNER webservices in
+        one call. The first, will call the second, which will call the third, etc.
+        See for more information the <a href="http://opener-project.github.io">
+          webservice documentation online</a>.
+      </dd>
+      <dt>error_callback</dt>
+      <dd>URL to notify if errors occur in the background process. The error
+      callback will do a POST with the error message in the 'error' field.</dd>
+      </dt>
 
-            <dt>POST /</dt>
-            <dd>Submits a KAF document</dd>
-        </dl>
 
-        <h2>Parameters</h2>
 
-        <dl>
-            <dt>text *</dt>
-            <dd>The KAF document to tag.</dd>
+    </dl>
 
-            <dt>callbacks</dt>
-            <dd>A collection of callback URLs that are processed as a chain.</dd>
 
-            <dt>error_callback</dt>
-            <dd>Errors are submitted to this URL in the "error" field.</dd>
-        </dl>
-    </body>
+    <p>
+
+    </p>
+
+  </body>
 </html>
