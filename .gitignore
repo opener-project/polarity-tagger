@@ -14,6 +14,7 @@ core/site-packages/pre_install/*
 nosetests.xml
 Gemfile.lock
 tmp/*
+pkg/*
 
 # Keep these files.
 !.gitkeep
