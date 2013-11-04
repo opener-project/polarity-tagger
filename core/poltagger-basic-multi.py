@@ -7,6 +7,11 @@
 #
 ##############################
 
+__desc='VUA polarity tagger multilanguage'
+__last_edited='4nov2013'
+__version='1.0'
+
+
 from collections import defaultdict
 import sys
 import os
@@ -124,5 +129,5 @@ if __name__ == '__main__':
       previousLemma = lemma
 
 
-    kafParserObj.addLinguisticProcessor('Basic_polarity_tagger_with_pos','1.0','terms',time_stamp=my_time_stamp)
+    kafParserObj.addLinguisticProcessor(__desc,__last_edited+'_'+__version,'terms', my_time_stamp)
     kafParserObj.saveToFile(sys.stdout)
