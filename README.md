@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/opener-project/polarity-tagger/status.png)](https://drone.io/github.com/opener-project/polarity-tagger/latest)
+
 # Polarity Tagger
 
 This repository contains the source code for the OpeNER polarity tagger. This
