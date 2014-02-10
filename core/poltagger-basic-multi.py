@@ -66,11 +66,14 @@ if __name__ == '__main__':
         sys.exit(-1)
 
     my_time_stamp = True
+    ignore_pos = False
     try:
-      opts, args = getopt.getopt(sys.argv[1:],"",["no-time"])
+      opts, args = getopt.getopt(sys.argv[1:],"",["no-time","ignore-pos"])
       for opt, arg in opts:
         if opt == "--no-time":
           my_time_stamp = False
+        elif opt == '--ignore-pos':
+          ignore_pos = True
     except getopt.GetoptError:
       pass
 
@@ -100,7 +103,8 @@ if __name__ == '__main__':
         lemma = lemma.lower()
 
       kaf_pos = term.getPos()
-
+      if ignore_pos:
+        kaf_pos = None
       sentiment_attribs = {}
 
       ## POLARITY
