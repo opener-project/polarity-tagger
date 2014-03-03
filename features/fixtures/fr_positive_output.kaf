@@ -119,14 +119,12 @@
         <!--hôtel-->
         <target id="w2"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="être" morphofeat="VP3s" pos="V" tid="t3" type="open">
       <span>
         <!--est-->
         <target id="w3"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term head="t4.1" lemma="super_bien_placer" morphofeat="VW" pos="V" tid="t4" type="open">
       <span>
@@ -150,7 +148,6 @@
         <!--Porte-->
         <target id="w8"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="de" morphofeat="P" pos="P" tid="t7" type="close">
       <span>
@@ -216,7 +213,6 @@
         <!--station-->
         <target id="w22"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="du" morphofeat="P" pos="P" tid="t16" type="close">
       <span>
@@ -229,14 +225,13 @@
         <!--métro-->
         <target id="w24"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="13" morphofeat="Ams" pos="G" tid="t18" type="open">
       <span>
         <!--13-->
         <target id="w25"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="." morphofeat="." pos="O" tid="t19" type="close">
       <span>
@@ -249,14 +244,14 @@
         <!--Vraiment-->
         <target id="w27"/>
       </span>
-      <sentiment resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="accessible" morphofeat="Ams" pos="G" tid="t21" type="open">
       <span>
         <!--accessible-->
         <target id="w28"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="à" morphofeat="P" pos="P" tid="t22" type="close">
       <span>
@@ -269,7 +264,7 @@
         <!--tout-->
         <target id="w30"/>
       </span>
-      <sentiment resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="." morphofeat="." pos="O" tid="t24" type="close">
       <span>
@@ -288,28 +283,26 @@
         <!--hôtel-->
         <target id="w33"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="être" morphofeat="VP3s" pos="V" tid="t27" type="open">
       <span>
         <!--est-->
         <target id="w34"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="très" morphofeat="ADV" pos="G" tid="t28" type="open">
       <span>
         <!--très-->
         <target id="w35"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="sympathique" morphofeat="Ams" pos="G" tid="t29" type="open">
       <span>
         <!--sympathique-->
         <target id="w36"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t30" type="close">
       <span>
@@ -322,7 +315,7 @@
         <!--propre-->
         <target id="w38"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="," morphofeat="," pos="O" tid="t32" type="close">
       <span>
@@ -341,7 +334,7 @@
         <!--ai-->
         <target id="w41"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="eu" morphofeat="default" pos="O" tid="t35" type="close">
       <span>
@@ -354,7 +347,7 @@
         <!--droit-->
         <target id="w43"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="à" morphofeat="P" pos="P" tid="t37" type="close">
       <span>
@@ -373,14 +366,13 @@
         <!--chambre-->
         <target id="w46"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="double" morphofeat="Afs" pos="G" tid="t40" type="open">
       <span>
         <!--double-->
         <target id="w47"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="au" morphofeat="P" pos="P" tid="t41" type="close">
       <span>
@@ -399,7 +391,6 @@
         <!--étage-->
         <target id="w50"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="," morphofeat="," pos="O" tid="t44" type="close">
       <span>
@@ -418,14 +409,13 @@
         <!--ai-->
         <target id="w53"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="adorer" morphofeat="VKms" pos="V" tid="t47" type="open">
       <span>
         <!--adoré-->
         <target id="w54"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="..." morphofeat="..." pos="O" tid="t48" type="close">
       <span>
@@ -444,21 +434,20 @@
         <!--était-->
         <target id="w57"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="très" morphofeat="ADV" pos="G" tid="t51" type="open">
       <span>
         <!--très-->
         <target id="w58"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="calme" morphofeat="Ams" pos="G" tid="t52" type="open">
       <span>
         <!--calme-->
         <target id="w59"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t53" type="close">
       <span>
@@ -495,7 +484,6 @@
         <!--accueil-->
         <target id="w65"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t59" type="close">
       <span>
@@ -508,14 +496,14 @@
         <!--très-->
         <target id="w67"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="gentil" morphofeat="Ams" pos="G" tid="t61" type="open">
       <span>
         <!--gentil-->
         <target id="w68"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="." morphofeat="." pos="O" tid="t62" type="close">
       <span>
@@ -540,14 +528,13 @@
         <!--est-->
         <target id="w72"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="accessible" morphofeat="Ams" pos="G" tid="t66" type="open">
       <span>
         <!--accessible-->
         <target id="w73"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="gratuitement" morphofeat="ADV" pos="G" tid="t67" type="open">
       <span>
@@ -566,7 +553,7 @@
         <!--tous-->
         <target id="w76"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="mais" morphofeat="CC" pos="C" tid="t70" type="close">
       <span>
@@ -579,7 +566,7 @@
         <!--bon-->
         <target id="w78"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="ça" morphofeat="PROms" pos="P" tid="t72" type="close">
       <span>
@@ -592,7 +579,6 @@
         <!--coupe-->
         <target id="w80"/>
       </span>
-      <sentiment polarity="negative" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="souvent" morphofeat="ADV" pos="G" tid="t74" type="open">
       <span>
@@ -617,14 +603,13 @@
         <!--est-->
         <target id="w84"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="mieux" morphofeat="ADV" pos="G" tid="t78" type="open">
       <span>
         <!--mieux-->
         <target id="w85"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="que" morphofeat="CS" pos="C" tid="t79" type="close">
       <span>
@@ -661,21 +646,19 @@
         <!--Paris-->
         <target id="w91"/>
       </span>
-      <sentiment polarity="neutral" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="tout" morphofeat="PROms" pos="P" tid="t85" type="close">
       <span>
         <!--tout-->
         <target id="w92"/>
       </span>
-      <sentiment resource="Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
+      <sentiment resource="General domain lexicon for French . Vicomtech_general_lexicon_french" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="être" morphofeat="VP3s" pos="V" tid="t86" type="open">
       <span>
         <!--est-->
         <target id="w93"/>
       </span>
-      <sentiment polarity="positive" resource="Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="payant" morphofeat="Ams" pos="G" tid="t87" type="open">
       <span>

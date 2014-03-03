@@ -121,7 +121,7 @@
       <span>
         <target id="w_3"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
     </term>
     <term lemma="eens" tid="t_4" type="open">
       <span>
@@ -202,7 +202,7 @@
       <span>
         <target id="w_19"/>
       </span>
-      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+      <sentiment polarity="negative" resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="was" tid="t_20" type="open">
       <span>
@@ -263,7 +263,7 @@
       <span>
         <target id="w_31"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
     </term>
     <term lemma="nagekomen" tid="t_32" type="open">
       <span>
@@ -299,19 +299,19 @@
       <span>
         <target id="w_38"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="intensifier"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="intensifier"/>
     </term>
     <term lemma="niet" tid="t_39" type="open">
       <span>
         <target id="w_39"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
     </term>
     <term lemma="klantvriendelijk" tid="t_40" type="open" pos="G">
       <span>
         <target id="w_40"/>
       </span>
-      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+      <sentiment polarity="positive" resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="," tid="t_41" type="open">
       <span>
@@ -382,7 +382,7 @@
       <span>
         <target id="w_54"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
     </term>
     <term lemma="samen" tid="t_55" type="open">
       <span>
@@ -453,13 +453,13 @@
       <span>
         <target id="w_68"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
     </term>
     <term lemma="aantrekkelijk" tid="t_69" type="open" pos="G">
       <span>
         <target id="w_69"/>
       </span>
-      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+      <sentiment polarity="positive" resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="om" tid="t_70" type="open">
       <span>
@@ -580,7 +580,7 @@
       <span>
         <target id="w_93"/>
       </span>
-      <sentiment resource="VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf" sentiment_modifier="shifter"/>
     </term>
     <term lemma="aan" tid="t_94" type="open">
       <span>

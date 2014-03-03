@@ -90,7 +90,8 @@ if __name__ == '__main__':
     ## Load lexicons
 
     lang = kafParserObj.getLanguage()
-    lexSent = LexiconSent(lang)
+    ##lexSent = LexiconSent(lang,'general')
+    lexSent = LexiconSent(lang)  ##Default lexicons
     ################
 
 
