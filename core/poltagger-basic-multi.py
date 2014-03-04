@@ -26,7 +26,7 @@ sys.path.append(os.path.join(this_folder, 'site-packages/pre_build'))
 sys.path.append(os.path.join(this_folder, 'site-packages/pre_install'))
 
 from VUKafParserPy import KafParser
-from VUSentimentLexicon import LexiconSent
+from VUSentimentLexicon import LexiconSent, show_lexicons
 
 logging.basicConfig(stream=sys.stderr,format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 
@@ -56,9 +56,15 @@ if __name__ == '__main__':
     argument_parser = argparse.ArgumentParser(description='Tags a text with polarities at lemma level')
     argument_parser.add_argument("--no-time",action="store_false", default=True, dest="my_time_stamp",help="For not including timestamp in header")
     argument_parser.add_argument("--ignore-pos", action="store_true", default=False , dest="ignore_pos", help="Ignore the pos labels")
+    argument_parser.add_argument("--show-lexicons", action="store", choices = ('nl','en','de','es','it','fr'), default=None,dest='show_lexicons',help="Show lexicons for the given language and exit")
+    argument_parser.add_argument("--lexicon", action="store", default=None, dest="lexicon", help="Lexicon identifier, check with --show-lexicons LANG for options")
     argument_parser.add_argument('--version', action='version', version='%(prog)s '+VERSION)
     arguments = argument_parser.parse_args()
     #############
+
+    if arguments.show_lexicons is not None:
+        show_lexicons(arguments.show_lexicons)
+        sys.exit(0)
 
     numNegators = 0
     ## READ the data and create structure for terms
@@ -89,7 +95,7 @@ if __name__ == '__main__':
 
     lang = kafParserObj.getLanguage()
     ##lexSent = LexiconSent(lang,'general')
-    lexSent = LexiconSent(lang)  ##Default lexicons
+    lexSent = LexiconSent(lang,arguments.lexicon)  ##Default lexicons
     ################
 
 
