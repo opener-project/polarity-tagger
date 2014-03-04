@@ -1,5 +1,3 @@
-[![Build Status](https://drone.io/github.com/opener-project/polarity-tagger/status.png)](https://drone.io/github.com/opener-project/polarity-tagger/latest)
-
 # Polarity Tagger
 
 This repository contains the source code for the OpeNER polarity tagger. This
@@ -11,6 +9,65 @@ polarity tagger supports the following languages:
 * French
 * Italian
 * Spanish
+
+The language is read from the KAF file, so it doesn't need to be specified as a parameter.
+The program reads a KAF file from the standard input and writes the resulting KAf in the standard output.
+To see the options you can
+call to the main script with the -h or --help option
+```shell
+$ core/poltagger-basic-multi.py -h
+usage: poltagger-basic-multi.py [-h] [--no-time] [--ignore-pos]
+                                [--show-lexicons {nl,en,de,es,it,fr}]
+                                [--lexicon LEXICON] [--version]
+
+Tags a text with polarities at lemma level
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --no-time             For not including timestamp in header
+  --ignore-pos          Ignore the pos labels
+  --show-lexicons {nl,en,de,es,it,fr}
+                        Show lexicons for the given language and exit
+  --lexicon LEXICON     Lexicon identifier, check with --show-lexicons LANG
+                        for options
+  --version             show program's version number and exit
+````
+
+The most simple way to call to the tagger is:
+````shell
+cat my_input.nl.kaf | core/poltagger-basic-multi.py
+````
+
+The main options are those concerning with the usage of different lexicons. The lexicons are provided by the
+VU-sentiment-lexicon library (https://github.com/opener-project/VU-sentiment-lexicon), which needs to be installed.
+You can see what the lexicons available for a given language are by calling to the program with the option --show-lexicons LANG,
+for instance:
+````shell
+core/poltagger-basic-multi.py --show-lexicons nl
+
+##############################
+Available lexicons for nl
+  Identifier: "hotel" (Default)
+    Desc: Hotel domain lexicon for Dutch
+     Res: VUA_olery_lexicon_nl_lmf
+    File: /Users/ruben/python_envs/python2.7/lib/python2.7/VUSentimentLexicon/NL-lexicon/Sentiment-Dutch-HotelDomain.xml
+
+  Identifier:"general"
+    Desc: General lexicon for Dutch
+     Res: VUA_olery_lexicon_nl_lmf
+    File: /Users/ruben/python_envs/python2.7/lib/python2.7/VUSentimentLexicon/NL-lexicon/Sentiment-Dutch-general.xml
+
+##############################
+````
+
+Then you can use the lexicon identifiers to select the proper lexicon, with the option --lexicon
+````shell
+cat my_input.nl.kaf | core/poltagger-basic-multi.py --lexicon general
+````
+This command will call to the polarity tagger using the general lexicon for Dutch. The lexicon identifiers are unique only per language.
+If you don't specify a lexicon id (you skip the --lexicon option), or you provide a wrong identifier, the default lexicon will be loaded.
+If there is no lexicon marked as default in the --show-lexicon options, the first one in the list will be used. Check the VU-sentiment-lexicon
+for further informatino about how to manage lexicons.
 
 ## Requirements
 
@@ -98,3 +155,10 @@ and running the tests.
 For more information on the available Rake tasks run the following:
 
     bundle exec rake -T
+    
+##Contact##
+* Ruben Izquierdo
+* Vrije University of Amsterdam
+* ruben.izquierdobevia@vu.nl
+
+(Last update 4th-Mar-2014)
