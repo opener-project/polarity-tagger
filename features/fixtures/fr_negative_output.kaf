@@ -7,7 +7,7 @@
     <linguisticProcessors layer="terms">
       <lp name="opennlp-pos-treetagger-fr" timestamp="2013-05-13T11:09:08Z" version="1.0"/>
       <lp name="opennlp-multiword-fr" timestamp="2013-05-13T11:09:08Z" version="1.0"/>
-      <lp timestamp="*" version="4nov2013_1.0" name="VUA polarity tagger multilanguage"/>
+      <lp timestamp="*" version="4nov2013_1.1" name="VUA polarity tagger multilanguage"/>
     </linguisticProcessors>
   </kafHeader>
   <text>

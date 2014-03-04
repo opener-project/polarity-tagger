@@ -6,7 +6,7 @@
     </linguisticProcessors>
     <linguisticProcessors layer="terms">
       <lp name="SentenceTokenizer" timestamp="*" version="2.0"/>
-      <lp timestamp="*" version="4nov2013_1.0" name="VUA polarity tagger multilanguage"/>
+      <lp timestamp="*" version="4nov2013_1.1" name="VUA polarity tagger multilanguage"/>
     </linguisticProcessors>
   </kafHeader>
   <text>

@@ -9,13 +9,13 @@
 
 __desc='VUA polarity tagger multilanguage'
 __last_edited='4nov2013'
-__version='1.0'
+VERSION="1.1"
 
 
 from collections import defaultdict
 import sys
 import os
-import getopt
+import argparse
 import logging
 
 this_folder = os.path.dirname(os.path.realpath(__file__))
@@ -52,7 +52,13 @@ if __name__ == '__main__':
     terms = []
     logging.basicConfig(stream=sys.stderr,format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 
-
+    ##CLI options   
+    argument_parser = argparse.ArgumentParser(description='Tags a text with polarities at lemma level')
+    argument_parser.add_argument("--no-time",action="store_false", default=True, dest="my_time_stamp",help="For not including timestamp in header")
+    argument_parser.add_argument("--ignore-pos", action="store_true", default=False , dest="ignore_pos", help="Ignore the pos labels")
+    argument_parser.add_argument('--version', action='version', version='%(prog)s '+VERSION)
+    arguments = argument_parser.parse_args()
+    #############
 
     numNegators = 0
     ## READ the data and create structure for terms
@@ -63,20 +69,12 @@ if __name__ == '__main__':
     else:
         print>>sys.stderr,'Input stream required.'
         print>>sys.stderr,'Example usage: cat myUTF8file.kaf.xml |',sys.argv[0]
+        print>>sys.stderr,sys.argv[0]+' -h  for help'
         sys.exit(-1)
 
-    my_time_stamp = True
-    ignore_pos = False
-    try:
-      opts, args = getopt.getopt(sys.argv[1:],"",["no-time","ignore-pos"])
-      for opt, arg in opts:
-        if opt == "--no-time":
-          my_time_stamp = False
-        elif opt == '--ignore-pos':
-          ignore_pos = True
-    except getopt.GetoptError:
-      pass
 
+
+    
     kafParserObj = KafParser(fic)
 
     for term in kafParserObj.getTerms():
@@ -104,7 +102,7 @@ if __name__ == '__main__':
         lemma = lemma.lower()
 
       kaf_pos = term.getPos()
-      if ignore_pos:
+      if arguments.ignore_pos:
         kaf_pos = None
       sentiment_attribs = {}
 
@@ -134,5 +132,5 @@ if __name__ == '__main__':
       previousLemma = lemma
 
 
-    kafParserObj.addLinguisticProcessor(__desc,__last_edited+'_'+__version,'terms', my_time_stamp)
+    kafParserObj.addLinguisticProcessor(__desc,__last_edited+'_'+VERSION,'terms', arguments.my_time_stamp)
     kafParserObj.saveToFile(sys.stdout)
