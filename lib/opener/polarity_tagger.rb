@@ -1,5 +1,4 @@
 require 'open3'
-require 'optparse'
 
 require_relative 'polarity_tagger/version'
 require_relative 'polarity_tagger/cli'
@@ -12,16 +11,7 @@ module Opener
   #  @return [Hash]
   #
   class PolarityTagger
-    attr_reader :options
-
-    ##
-    # Hash containing the default options to use.
-    #
-    # @return [Hash]
-    #
-    DEFAULT_OPTIONS = {
-      :args => []
-    }.freeze
+    attr_reader :options, :args
 
     ##
     # @param [Hash] options
@@ -30,7 +20,8 @@ module Opener
     #  to the underlying kernel.
     #
     def initialize(options = {})
-      @options = DEFAULT_OPTIONS.merge(options)
+      @args    = options.delete(:args) || []
+      @options = options
     end
 
     ##
@@ -39,7 +30,7 @@ module Opener
     # @return [String]
     #
     def command
-      return "#{adjust_python_path} python -E -OO #{kernel} #{options[:args].join(' ')}"
+      return "#{adjust_python_path} python -E -OO #{kernel}"
     end
 
     ##
@@ -50,7 +41,7 @@ module Opener
     # @return [Array]
     #
     def run(input)
-      return Open3.capture3(*command.split(" "), :stdin_data => input)
+      return capture(input)
     end
 
     protected
@@ -62,7 +53,20 @@ module Opener
       "env PYTHONPATH=#{site_packages}:$PYTHONPATH"
     end
     
-
+    ##
+    # capture3 method doesn't work properly with Jruby, so 
+    # this is a workaround
+    #
+    def capture(input)
+      Open3.popen3(*command.split(" ")) {|i, o, e, t|
+        out_reader = Thread.new { o.read }
+        err_reader = Thread.new { e.read }
+        i.write input
+        i.close
+        [out_reader.value, err_reader.value, t.value]
+      }
+    end
+    
     ##
     # @return [String]
     #
