@@ -1,5 +1,5 @@
 module Opener
   class PolarityTagger
-    VERSION = '0.3.3'
+    VERSION = '1.0.0'
   end # PolarityTagger
 end # Opener
