@@ -7,7 +7,7 @@ Given /^I put it through the kernel$/ do
   @tmp_filename = "output_#{rand(1000)}_#{@filename}"
   @output       = tmp_file(@tmp_filename)
   input         = File.read(@input)
-  output, *_    = Open3.capture3(kernel.command, :stdin_data => input)
+  output, *_    = kernel.run(input)
 
   File.open(@output, 'w') do |handle|
     handle.write(output)

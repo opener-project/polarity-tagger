@@ -39,7 +39,7 @@ module Opener
     # @return [String]
     #
     def command
-      return "python -E -O #{kernel} #{options[:args].join(' ')}"
+      return "#{adjust_python_path} python -E -OO #{kernel} #{options[:args].join(' ')}"
     end
 
     ##
@@ -50,10 +50,18 @@ module Opener
     # @return [Array]
     #
     def run(input)
-      return Open3.capture3(command, :stdin_data => input)
+      return Open3.capture3(*command.split(" "), :stdin_data => input)
     end
 
     protected
+    ##
+    # @return [String]
+    #
+    def adjust_python_path
+      site_packages =  File.join(core_dir, 'site-packages')
+      "env PYTHONPATH=#{site_packages}:$PYTHONPATH"
+    end
+    
 
     ##
     # @return [String]
