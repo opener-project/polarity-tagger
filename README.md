@@ -124,16 +124,11 @@ where X is one of the following two:
 
 * `pre_build`: contains packages that are installed before building the Gem,
   these packages are shipped with the Gem
-* `pre_install`: contains packages that are installed in to this directory upon
-  installing the Gem. This directory should exclusively be used for compiled
-  Python packages such as lxml.
 
 There are also two requirements files for pip:
 
 * `pre_build_requirements.txt`: installs the requirements for the `pre_build`
   directory.
-* `pre_install_requirements.txt`: installs the requirements for the
-  `pre_install` directory.
 
 To easily install all the required dependencies (required for running the tests
 for example) run the following:
