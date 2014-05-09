@@ -51,7 +51,6 @@ def calculateOverallPolarity(accPol,numNegators):
 if __name__ == '__main__':
 
     terms = []
-    logging.basicConfig(stream=sys.stderr,format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 
     ##CLI options   
     argument_parser = argparse.ArgumentParser(description='Tags a text with polarities at lemma level')
@@ -59,13 +58,21 @@ if __name__ == '__main__':
     argument_parser.add_argument("--ignore-pos", action="store_true", default=False , dest="ignore_pos", help="Ignore the pos labels")
     argument_parser.add_argument("--show-lexicons", action="store", choices = ('nl','en','de','es','it','fr'), default=None,dest='show_lexicons',help="Show lexicons for the given language and exit")
     argument_parser.add_argument("--lexicon", action="store", default=None, dest="lexicon", help="Lexicon identifier, check with --show-lexicons LANG for options")
+    argument_parser.add_argument("--silent",dest="silent",action='store_true', help='Turn off debug info')
     argument_parser.add_argument('--version', action='version', version='%(prog)s '+VERSION)
+    
     arguments = argument_parser.parse_args()
     #############
 
     if arguments.show_lexicons is not None:
         show_lexicons(arguments.show_lexicons)
         sys.exit(0)
+
+    logging.basicConfig(stream=sys.stderr,format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
+
+    if arguments.silent:
+        logging.getLogger().setLevel(logging.ERROR)        
+    
 
     numNegators = 0
     ## READ the data and create structure for terms
@@ -138,6 +145,6 @@ if __name__ == '__main__':
       ## Next term
       previousLemma = lemma
 
-
+    
     kafParserObj.addLinguisticProcessor(__desc,__last_edited+'_'+VERSION,'terms', arguments.my_time_stamp)
     kafParserObj.saveToFile(sys.stdout)
