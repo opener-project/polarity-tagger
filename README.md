@@ -1,7 +1,13 @@
-# Polarity Tagger
+#Polarity tagger#
 
-This repository contains the source code for the OpeNER polarity tagger. This
-polarity tagger supports the following languages:
+##Introduction##
+This repository contains the code for the OpeNER polarity tagger. This tool tags words in a KAF file with polarity information, which basically is:
+
+* Polarity information, which represents positive or negative facts in a certain domain. Good, cheap and clean can be positive words in a hotel domain, while
+bad, expensive and dirty could be negative ones.
+* Sentiment modifiers, which modify the polarity of a surrounding polarity word. For instance very or no are sentiment modifiers
+
+The polarity tagger supports the following languages:
 
 * Dutch
 * German
@@ -10,15 +16,23 @@ polarity tagger supports the following languages:
 * Italian
 * Spanish
 
-The language is read from the KAF file, so it doesn't need to be specified as a parameter.
+The most simple way to call to the tagger is:
+````shell
+cat my_input.nl.kaf | core/poltagger-basic-multi.py
+````
+
+
+##How-to##
+
+The main script of this tool is a python file, which accepts a set of parameters to determine which features
+or options we want to use. The language is read from the KAF file, so it doesn't need to be specified as a parameter.
 The program reads a KAF file from the standard input and writes the resulting KAf in the standard output.
-To see the options you can
-call to the main script with the -h or --help option
-```shell
-$ core/poltagger-basic-multi.py -h
+To see the options you can call to the main script with the -h or --help option
+````shell
+$ python core/poltagger-basic-multi.py -h
 usage: poltagger-basic-multi.py [-h] [--no-time] [--ignore-pos]
                                 [--show-lexicons {nl,en,de,es,it,fr}]
-                                [--lexicon LEXICON] [--version]
+                                [--lexicon LEXICON] [--silent] [--version]
 
 Tags a text with polarities at lemma level
 
@@ -30,13 +44,13 @@ optional arguments:
                         Show lexicons for the given language and exit
   --lexicon LEXICON     Lexicon identifier, check with --show-lexicons LANG
                         for options
+  --silent              Turn off debug info
   --version             show program's version number and exit
 ````
 
-The most simple way to call to the tagger is:
-````shell
-cat my_input.nl.kaf | core/poltagger-basic-multi.py
-````
+The `--ignore-pos` parameter must be used when want to ignore the part-of-speech information assigned to the lemmas, and we want to assign polarities
+just to the lemmas, not considering the POS tag. This could be useful when the information provided by the pos-tagger is not accurate or the pos-tagging
+has not been processed.
 
 The main options are those concerning with the usage of different lexicons. The lexicons are provided by the
 VU-sentiment-lexicon library (https://github.com/opener-project/VU-sentiment-lexicon), which needs to be installed.
@@ -64,19 +78,20 @@ Then you can use the lexicon identifiers to select the proper lexicon, with the 
 ````shell
 cat my_input.nl.kaf | core/poltagger-basic-multi.py --lexicon general
 ````
-This command will call to the polarity tagger using the general lexicon for Dutch. The lexicon identifiers are unique only per language.
-If you don't specify a lexicon id (you skip the --lexicon option), or you provide a wrong identifier, the default lexicon will be loaded.
-If there is no lexicon marked as default in the --show-lexicon options, the first one in the list will be used. Check the VU-sentiment-lexicon
-for further informatino about how to manage lexicons.
 
-## Requirements
+This command will call to the polarity tagger using the general lexicon for Dutch. The lexicon identifiers are unique only per language.
+If the lexicon id is not specified(you skip the --lexicon option), or you provide a wrong identifier, the default lexicon will be loaded.
+If there is no lexicon marked as default in the --show-lexicon options, the first one in the list will be used. Check the VU-sentiment-lexicon
+for further information about how to manage lexicons and add new ones
+
+##Requirements##
 
 * Python 2.7.0 or newer
 * Ruby 1.9.2 or newer
 * pip
 * libxml2
 
-## Installation
+##Installation##
 
 Using Bundler:
 
@@ -94,13 +109,7 @@ Using regular RubyGems (once the Gem is available):
 
     gem install opener-polarity-tagger
 
-## Usage
-
-Tagging a KAF file:
-
-    cat some_input_file.kaf | polarity-tagger
-
-## Contributing
+##Contributing##
 
 First make sure all the required dependencies are installed:
 
@@ -113,7 +122,7 @@ Then download the required Python code:
 Once this is done continue reading the sections below to get a better
 understanding about the repository structure.
 
-## Structure
+##Structure##
 
 This repository comes in two parts: a collection of Python source files and
 Ruby source code. The Python code can be found in `core/`, the Ruby code can be
@@ -138,7 +147,7 @@ for example) run the following:
 This will take care of verifying the requirements and downloading and
 installing the Python packages.
 
-## Testing
+##Testing##
 
 To run the tests (which are powered by Cucumber), simply run the following:
 
@@ -156,4 +165,4 @@ For more information on the available Rake tasks run the following:
 * Vrije University of Amsterdam
 * ruben.izquierdobevia@vu.nl
 
-(Last update 4th-Mar-2014)
+
