@@ -37,7 +37,7 @@ cat some-kaf-file.kaf | polarity-tagger --resource_path path/to/extract/lexicon 
 To push options to the python core use a double dash (--)
 
 ```
-cat some-kaf.kaf | polarity -- --no-pos
+cat some-kaf.kaf | polarity-tagger -- --no-pos
 ```
 
 #### Getting to the core
