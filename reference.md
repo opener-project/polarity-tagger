@@ -23,7 +23,7 @@ Partial output
 
 ```
 cat some-kaf-file.kaf | polarity-tagger --resource-path path/to/lexicon
-``
+```
 
 #### Downloading and switching to lexicon
 
