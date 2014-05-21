@@ -43,7 +43,8 @@ module Opener
         end
 
         option_parser.parse!(component_options)
-        resource_switcher.install(@options)
+        force = false
+        resource_switcher.install(@options, force)
       end
 
       ##
