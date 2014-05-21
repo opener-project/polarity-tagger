@@ -1,3 +1,6 @@
+require 'opener/core/resource_switcher'
+require 'opener/core/argv_splitter'
+
 module Opener
   class PolarityTagger
     ##
@@ -9,17 +12,22 @@ module Opener
     #  @return [OptionParser]
     #
     class CLI
-      attr_reader :options, :option_parser
+      attr_reader :options, :option_parser, :resource_switcher
 
       ##
       # @param [Hash] options
       #
       def initialize(options = {})
-        @options = DEFAULT_OPTIONS.merge(options)
+        @options = options
+
+        @resource_switcher = Opener::Core::ResourceSwitcher.new
+        component_options, options[:args] = Opener::Core::ArgvSplitter.split(options[:args])
 
         @option_parser = OptionParser.new do |opts|
           opts.program_name   = 'polarity-tagger'
           opts.summary_indent = '  '
+
+          resource_switcher.bind(opts, @options)
 
           opts.on('-h', '--help', 'Shows this help message') do
             show_help
@@ -32,23 +40,16 @@ module Opener
           opts.on('-l', '--log', 'Enable logging to STDERR') do
             @options[:logging] = true
           end
-
-          opts.separator <<-EOF
-
-Examples:
-
-  cat example.kaf | #{opts.program_name}    # Basic usage
-  cat example.kaf | #{opts.program_name} -l # Logs information to STDERR
-          EOF
         end
+
+        option_parser.parse!(component_options)
+        resource_switcher.install(@options)
       end
 
       ##
       # @param [String] input
       #
       def run(input)
-        option_parser.parse!(options[:args])
-
         tagger = PolarityTagger.new(options)
 
         stdout, stderr, process = tagger.run(input)

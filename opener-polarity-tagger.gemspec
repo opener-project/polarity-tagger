@@ -30,6 +30,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'httpclient'
   gem.add_dependency 'puma'
   gem.add_dependency 'opener-webservice'
+  gem.add_dependency 'opener-core'
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'cucumber'

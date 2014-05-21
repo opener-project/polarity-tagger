@@ -30,7 +30,15 @@ module Opener
     # @return [String]
     #
     def command
-      return "#{adjust_python_path} python -E -OO #{kernel}"
+      return "#{adjust_python_path} python -E -OO #{kernel} #{lexicon_path} #{args.join(" ")}"
+    end
+
+    def lexicon_path
+      if path = options[:resource_path]
+        return "--lexicon-path #{path}"
+      else
+        return nil
+      end
     end
 
     ##
@@ -52,9 +60,9 @@ module Opener
       site_packages =  File.join(core_dir, 'site-packages')
       "env PYTHONPATH=#{site_packages}:$PYTHONPATH"
     end
-    
+
     ##
-    # capture3 method doesn't work properly with Jruby, so 
+    # capture3 method doesn't work properly with Jruby, so
     # this is a workaround
     #
     def capture(input)
@@ -66,7 +74,7 @@ module Opener
         [out_reader.value, err_reader.value, t.value]
       }
     end
-    
+
     ##
     # @return [String]
     #
