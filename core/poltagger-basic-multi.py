@@ -28,7 +28,7 @@ sys.path.append(os.path.join(this_folder, 'site-packages/pre_install'))
 
 from lxml import etree
 from VUKafParserPy import KafParser
-from VUSentimentLexicon import LexiconSent
+from VUSentimentLexicon import LexiconSent, show_lexicons
 
 logging.basicConfig(stream=sys.stderr,format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 
