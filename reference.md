@@ -42,10 +42,7 @@ cat some-kaf.kaf | polarity-tagger -- --no-pos
 
 #### Getting to the core
 
-The main script of this tool is a python file, which accepts a set of parameters to determine which features
-or options we want to use. The language is read from the KAF file, so it doesn't need to be specified as a parameter.
-The program reads a KAF file from the standard input and writes the resulting KAf in the standard output.
-To see the options you can call to the main script with the -h or --help option
+The main script of this tool is a python file, which accepts a set of parameters to determine which features or options we want to use. The language is read from the KAF file, so it doesn't need to be specified as a parameter. The program reads a KAF file from the standard input and writes the resulting KAf in the standard output.To see the options you can call to the main script with the -h or --help option
 
     shell
     polarity-tagger -- -h
@@ -68,14 +65,9 @@ optional arguments:
   --version             show program's version number and exit
 ~~~~
 
-The `--ignore-pos` parameter must be used when want to ignore the part-of-speech information assigned to the lemmas, and we want to assign polarities
-just to the lemmas, not considering the POS tag. This could be useful when the information provided by the pos-tagger is not accurate or the pos-tagging
-has not been processed.
+The `--ignore-pos` parameter must be used when want to ignore the part-of-speech information assigned to the lemmas, and we want to assign polarities just to the lemmas, not considering the POS tag. This could be useful when the information provided by the pos-tagger is not accurate or the pos-tagging has not been processed.
 
-The main options are those concerning with the usage of different lexicons. The lexicons are provided by the
-VU-sentiment-lexicon library (https://github.com/opener-project/VU-sentiment-lexicon), which needs to be installed.
-You can see what the lexicons available for a given language are by calling to the program with the option --show-lexicons LANG,
-for instance:
+The main options are those concerning with the usage of different lexicons. The lexicons are provided by the VU-sentiment-lexicon library (https://github.com/opener-project/VU-sentiment-lexicon), which needs to be installed. You can see what the lexicons available for a given language are by calling to the program with the option --show-lexicons LANG, for instance:
 
     shell
     polarity-tagger -- --show-lexicons nl
@@ -100,10 +92,7 @@ Then you can use the lexicon identifiers to select the proper lexicon, with the 
     cat my_input.nl.kaf | polarity-tagger -- --lexicon general
 
 
-This command will call to the polarity tagger using the general lexicon for Dutch. The lexicon identifiers are unique only per language.
-If the lexicon id is not specified(you skip the --lexicon option), or you provide a wrong identifier, the default lexicon will be loaded.
-If there is no lexicon marked as default in the --show-lexicon options, the first one in the list will be used. Check the VU-sentiment-lexicon
-for further information about how to manage lexicons and add new ones
+This command will call to the polarity tagger using the general lexicon for Dutch. The lexicon identifiers are unique only per language. If the lexicon id is not specified (you skip the --lexicon option), or you provide a wrong identifier, the default lexicon will be loaded. If there is no lexicon marked as default in the --show-lexicon options, the first one in the list will be used. Check the VU-sentiment-lexicon for further information about how to manage lexicons and add new ones.
 
 ### Webservice
 
@@ -116,8 +105,7 @@ component-name-server
 After launching the server, you can reach the webservice at
 <http://localhost:9292>.
 
-The webservice takes several options that get passed along to [Puma](http://puma.io), the
-webserver used by the component. The options are:
+The webservice takes several options that get passed along to [Puma](http://puma.io), the webserver used by the component. The options are:
 
 
     -b, --bind URI                   URI to bind to (tcp://, unix://, ssl://)
@@ -175,9 +163,7 @@ Daemon options:
 
 #### Environment Variables
 
-These daemons make use of Amazon SQS queues and other Amazon services.
-The access to these services and other environment variables can be configured
-using a .opener-daemons-env file in the home directory of the current user.
+These daemons make use of Amazon SQS queues and other Amazon services. The access to these services and other environment variables can be configured using a .opener-daemons-env file in the home directory of the current user.
 
 It is also possible to provide the environment variables directly to the deamon.
 
