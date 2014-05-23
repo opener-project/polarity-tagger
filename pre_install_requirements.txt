@@ -1,2 +1,2 @@
-git+ssh://git@github.com/opener-project/VU-kaf-parser.git#egg=VUKafParserPy
-git+ssh://git@github.com/opener-project/VU-sentiment-lexicon.git#egg=VUSentimentLexicon
+https://github.com/opener-project/VU-kaf-parser/archive/v1.1.zip#egg=VUKafParserPy
+https://github.com/opener-project/VU-sentiment-lexicon/archive/v1.1.zip#egg=VUSentimentLexicon
