@@ -47,4 +47,8 @@ option_parser.parse!(ARGV)
 
 switcher.install(switcher_opts)
 
-Puma::CLI.new(puma_args).run
+# Puma on JRuby does some weird stuff with forking/exec. As a result of this we
+# *have to* update ARGV as otherwise running Puma as a daemon does not work.
+ARGV.replace(puma_args)
+
+Puma::CLI.new(ARGV).run
