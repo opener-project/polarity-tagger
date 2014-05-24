@@ -36,6 +36,8 @@ module Opener
     def lexicon_path
       if path = options[:resource_path]
         return "--lexicon-path #{path}"
+      elsif path = ENV['POLARITY_LEXICON_PATH']
+        return "--lexicon-path #{path}"
       else
         return nil
       end
