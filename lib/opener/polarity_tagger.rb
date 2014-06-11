@@ -2,6 +2,7 @@ require 'open3'
 
 require_relative 'polarity_tagger/version'
 require_relative 'polarity_tagger/cli'
+require_relative 'polarity_tagger/error_layer'
 
 module Opener
   ##
@@ -51,7 +52,13 @@ module Opener
     # @return [Array]
     #
     def run(input)
-      return capture(input)
+      begin
+        stdout, stderr, process = capture(input)
+        raise stderr unless process.success?
+        return stdout
+      rescue Exception => error
+        return ErrorLayer.new(input, error.message, self.class).add
+      end
     end
 
     protected
