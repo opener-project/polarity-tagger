@@ -33,7 +33,7 @@
       <span>
         <target id="w_1"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="geniet" tid="t_2" type="open">
       <span>
@@ -59,7 +59,7 @@
       <span>
         <target id="w_6"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="dag" tid="t_7" type="open">
       <span>
@@ -76,10 +76,11 @@
         <target id="w_9"/>
       </span>
     </term>
-    <term lemma="groot" tid="t_10" type="open">
+    <term lemma="groot" tid="t_10" type="open" pos="G">
       <span>
         <target id="w_10"/>
       </span>
+      <sentiment polarity="positive" resource="General lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="terras" tid="t_11" type="open">
       <span>
@@ -105,7 +106,7 @@
       <span>
         <target id="w_15"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for Dutch . VUA_olery_lexicon_nl_lmf"/>
     </term>
     <term lemma="service" tid="t_16" type="open">
       <span>

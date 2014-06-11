@@ -94,14 +94,12 @@
       <span>
         <target id="w4"/>
       </span>
-      <sentiment polarity="negative" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--return-->
     <term type="open" lemma="return" pos="V" morphofeat="VB" tid="t5">
       <span>
         <target id="w5"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--to-->
     <term type="close" lemma="to" pos="P" morphofeat="TO" tid="t6">
@@ -144,7 +142,6 @@
       <span>
         <target id="w12"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--,-->
     <term type="close" lemma="," pos="O" morphofeat="," tid="t13">
@@ -175,7 +172,7 @@
       <span>
         <target id="w17"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--hotel-->
     <term type="open" lemma="hotel" pos="N" morphofeat="NN" tid="t18">
@@ -200,7 +197,7 @@
       <span>
         <target id="w21"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--condition-->
     <term type="open" lemma="condition" pos="N" morphofeat="NN" tid="t22">
@@ -231,14 +228,13 @@
       <span>
         <target id="w26"/>
       </span>
-      <sentiment resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf" sentiment_modifier="intensifier"/>
     </term>
     <!--comfortable-->
     <term type="open" lemma="comfortable" pos="G" morphofeat="JJ" tid="t27">
       <span>
         <target id="w27"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--,-->
     <term type="close" lemma="," pos="O" morphofeat="," tid="t28">
@@ -293,7 +289,7 @@
       <span>
         <target id="w36"/>
       </span>
-      <sentiment polarity="positive" resource="Hotel domain lexicon for English . VUA_olery_lexicon_EN_lmf"/>
+      <sentiment polarity="positive" resource="General lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--walk-->
     <term type="open" lemma="walk" pos="N" morphofeat="NN" tid="t37">
