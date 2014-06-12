@@ -6,15 +6,12 @@ pip-log.txt
 .pydevproject
 
 # Ignore the Python package files.
-core/site-packages/pre_build/*
-core/site-packages/pre_install/*
+core/site-packages/pre_build
+core/site-packages/pre_install
 
-.coverage
-.tox
-nosetests.xml
 Gemfile.lock
 tmp/*
-pkg/*
+pkg
 
 # Keep these files.
 !.gitkeep
