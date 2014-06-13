@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 ##############################
-#                            #
-# Polarity tagger for dutch,english and German  #
+#                            
+# Polarity tagger for  all langs
 # 22-jan-2013: added code for reading the language code and create the lexicon
-#
+# 13-jun-2014: added parameter for indicating the path to the lexicons
+# 13-jun-2014: "merged" the previous VU-sentiment-lexicon with this module
 ##############################
 
 __desc='VUA polarity tagger multilanguage'
@@ -27,7 +28,7 @@ sys.path.append(os.path.join(this_folder, 'site-packages/pre_install'))
 
 from lxml import etree
 from VUKafParserPy import KafParser
-from VUSentimentLexicon import LexiconSent, show_lexicons
+from LexiconMod import LexiconSent, show_lexicons
 
 logging.basicConfig(stream=sys.stderr,format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 
