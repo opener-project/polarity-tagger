@@ -1,0 +1,7 @@
+<lexicons>
+  <lexicon id="general" default="1">
+    <filename>Sentiment-English-general.xml</filename>
+    <description>General lexicon for English</description>
+    <resource>VUA_olery_lexicon_EN_lmf</resource>
+  </lexicon>
+</lexicons>

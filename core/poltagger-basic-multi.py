@@ -52,14 +52,16 @@ def calculateOverallPolarity(accPol,numNegators):
 if __name__ == '__main__':
 
     terms = []
-
+    
+    default_path = os.path.join(this_folder,'general-lexicons')
+    
     ##CLI options
     argument_parser = argparse.ArgumentParser(description='Tags a text with polarities at lemma level')
     argument_parser.add_argument("--no-time",action="store_false", default=True, dest="my_time_stamp",help="For not including timestamp in header")
     argument_parser.add_argument("--ignore-pos", action="store_true", default=False , dest="ignore_pos", help="Ignore the pos labels")
     argument_parser.add_argument("--show-lexicons", action="store", choices = ('nl','en','de','es','it','fr'), default=None,dest='show_lexicons',help="Show lexicons for the given language and exit")
     argument_parser.add_argument("--lexicon", action="store", default=None, dest="lexicon", help="Lexicon identifier, check with --show-lexicons LANG for options")
-    argument_parser.add_argument("--lexicon-path", action="store", default=None, dest="lexicon_path", help="The path of the lexicons")
+    argument_parser.add_argument("--lexicon-path", action="store", default=default_path, dest="lexicon_path", help="The path of the lexicons")
     argument_parser.add_argument("--silent",dest="silent",action='store_true', help='Turn off debug info')
     argument_parser.add_argument('--version', action='version', version='%(prog)s '+VERSION)
 
