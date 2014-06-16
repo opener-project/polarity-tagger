@@ -96,7 +96,7 @@
       <span>
         <target id="w3"/>
       </span>
-      <sentiment polarity="positive" resource="General domain lexicon for German . VUA_lexicon_de_lmf"/>
+      <sentiment polarity="positive" resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="bei" morphofeat="APPR" pos="P" tid="t4" type="close">
       <span>
@@ -157,13 +157,13 @@
       <span>
         <target id="w15"/>
       </span>
-      <sentiment resource="General domain lexicon for German . VUA_lexicon_de_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010" sentiment_modifier="shifter"/>
     </term>
     <term lemma="fertig" morphofeat="ADJD" pos="G" tid="t16" type="open">
       <span>
         <target id="w16"/>
       </span>
-      <sentiment polarity="neutral" resource="General domain lexicon for German . VUA_lexicon_de_lmf"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="." morphofeat="$." pos="O" tid="t17" type="open">
       <span>
@@ -264,7 +264,7 @@
       <span>
         <target id="w36"/>
       </span>
-      <sentiment polarity="positive" resource="General domain lexicon for German . VUA_lexicon_de_lmf"/>
+      <sentiment polarity="positive" resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="Service" morphofeat="NN" pos="N" tid="t37" type="open">
       <span>
@@ -285,7 +285,7 @@
       <span>
         <target id="w40"/>
       </span>
-      <sentiment polarity="positive" resource="General domain lexicon for German . VUA_lexicon_de_lmf"/>
+      <sentiment polarity="positive" resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="Anlage" morphofeat="NN" pos="N" tid="t41" type="open">
       <span>
@@ -296,7 +296,7 @@
       <span>
         <target id="w42"/>
       </span>
-      <sentiment polarity="positive" resource="General domain lexicon for German . VUA_lexicon_de_lmf"/>
+      <sentiment polarity="positive" resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="aus" morphofeat="APPR" pos="P" tid="t43" type="close">
       <span>
@@ -352,7 +352,7 @@
       <span>
         <target id="w53"/>
       </span>
-      <sentiment resource="General domain lexicon for German . VUA_lexicon_de_lmf" sentiment_modifier="shifter"/>
+      <sentiment resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010" sentiment_modifier="shifter"/>
     </term>
     <term lemma="zu" morphofeat="PTKA" pos="O" tid="t54" type="open">
       <span>
@@ -363,7 +363,7 @@
       <span>
         <target id="w55"/>
       </span>
-      <sentiment polarity="neutral" resource="General domain lexicon for German . VUA_lexicon_de_lmf"/>
+      <sentiment polarity="neutral" resource="General domain lexicon for German . German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="!" morphofeat="$." pos="O" tid="t56" type="open">
       <span>
