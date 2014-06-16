@@ -2,7 +2,7 @@
 
 require 'puma/cli'
 require 'optparse'
-require 'opener/core/resource_switcher'
+require 'opener/core'
 
 rack_config   = File.expand_path('../../config.ru', __FILE__)
 switcher      = Opener::Core::ResourceSwitcher.new

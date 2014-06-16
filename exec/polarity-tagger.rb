@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'opener/daemons'
-require 'opener/core/resource_switcher'
+require 'opener/core'
 
 require_relative '../lib/opener/polarity_tagger'
 

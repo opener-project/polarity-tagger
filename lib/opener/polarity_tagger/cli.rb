@@ -1,5 +1,4 @@
-require 'opener/core/resource_switcher'
-require 'opener/core/argv_splitter'
+require 'opener/core'
 
 module Opener
   class PolarityTagger
