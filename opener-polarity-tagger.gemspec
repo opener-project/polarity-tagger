@@ -13,6 +13,7 @@ Gem::Specification.new do |gem|
 
   gem.files = Dir.glob([
     'core/*.py',
+    'core/general-lexicons/**/*',
     'ext/**/*',
     'lib/**/*',
     'config.ru',
