@@ -1,4 +1,5 @@
 require 'open3'
+require 'opener/core'
 
 require_relative 'polarity_tagger/version'
 require_relative 'polarity_tagger/cli'
