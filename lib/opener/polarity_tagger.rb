@@ -11,6 +11,9 @@ module Opener
   # @!attribute [r] options
   #  @return [Hash]
   #
+  # @!attribute [r] args
+  #  @return [Array]
+  #
   class PolarityTagger
     attr_reader :options, :args
 
@@ -19,6 +22,8 @@ module Opener
     #
     # @option options [Array] :args Collection of arbitrary arguments to pass
     #  to the underlying kernel.
+    #
+    # @option options [String] :resource_path Path to the lexicons to use.
     #
     def initialize(options = {})
       @args    = options.delete(:args) || []
@@ -34,14 +39,14 @@ module Opener
       return "#{adjust_python_path} python -E #{kernel} #{lexicon_path} #{args.join(" ")}"
     end
 
+    ##
+    # @return [String]
+    #
     def lexicon_path
-      if path = options[:resource_path]
-        return "--lexicon-path #{path}"
-      elsif path = ENV['POLARITY_LEXICON_PATH']
-        return "--lexicon-path #{path}"
-      else
-        return nil
-      end
+      path = options[:resource_path] || ENV['RESOURCE_PATH'] ||
+        ENV['POLARITY_LEXICON_PATH']
+
+      return path ? "--lexicon-path #{path}" : nil
     end
 
     ##
@@ -52,21 +57,21 @@ module Opener
     # @return [Array]
     #
     def run(input)
-      begin
-        stdout, stderr, process = capture(input)
-        raise stderr unless process.success?
-        return stdout
-      rescue Exception => error
-        return Opener::Core::ErrorLayer.new(input, error.message, self.class).add
-      end
+      stdout, stderr, process = capture(input)
+
+      raise stderr unless process.success?
+
+      return stdout
     end
 
     protected
+
     ##
     # @return [String]
     #
     def adjust_python_path
       site_packages =  File.join(core_dir, 'site-packages')
+
       "env PYTHONPATH=#{site_packages}:$PYTHONPATH"
     end
 

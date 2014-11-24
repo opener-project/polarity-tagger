@@ -1,10 +1,14 @@
 #!/usr/bin/env ruby
 
 require 'opener/daemons'
+require 'opener/core'
 
-exec_path = File.expand_path('../../exec/polarity-tagger.rb', __FILE__)
-
-Opener::Daemons::Controller.new(
-  :name      => 'polarity-tagger',
-  :exec_path => exec_path
+switcher   = Opener::Core::ResourceSwitcher.new
+controller = Opener::Daemons::Controller.new(
+  :name      => 'opener-polarity-tagger',
+  :exec_path => File.expand_path('../../exec/polarity-tagger.rb', __FILE__)
 )
+
+switcher.bind(controller.parser.parser)
+
+controller.run

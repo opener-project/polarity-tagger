@@ -3,74 +3,64 @@ require 'opener/core'
 module Opener
   class PolarityTagger
     ##
-    # CLI wrapper around {Opener::LanguageIdentifier} using OptionParser.
+    # CLI wrapper around {Opener::LanguageIdentifier} using Slop.
     #
-    # @!attribute [r] options
-    #  @return [Hash]
-    # @!attribute [r] option_parser
-    #  @return [OptionParser]
+    # @!attribute [r] parser
+    #  @return [Slop]
     #
     class CLI
-      attr_reader :options, :option_parser, :resource_switcher
+      attr_reader :parser
+
+      def initialize
+        @parser = configure_slop
+      end
 
       ##
-      # @param [Hash] options
+      # @param [Array] argv
       #
-      def initialize(options = {})
-        @options = options
+      def run(argv = ARGV)
+        parser.parse(argv)
+      end
 
-        @resource_switcher = Opener::Core::ResourceSwitcher.new
-        component_options, options[:args] = Opener::Core::ArgvSplitter.split(options[:args])
+      ##
+      # @return [Slop]
+      #
+      def configure_slop
+        return Slop.new(:strict => false, :indent => 2, :help => true) do
+          banner 'Usage: polarity-tagger [OPTIONS] -- [PYTHON OPTIONS]'
 
-        @option_parser = OptionParser.new do |opts|
-          opts.program_name   = 'polarity-tagger'
-          opts.summary_indent = '  '
+          separator <<-EOF.chomp
 
-          resource_switcher.bind(opts, @options)
+About:
 
-          opts.on('-h', '--help', 'Shows this help message') do
-            show_help
+    Component for tagging the polarity of elements in a KAF document. This
+    command reads input from STDIN.
+
+Examples:
+
+    Processing a KAF file:
+
+        cat some_file.kaf | polarity-tagger
+
+    Displaying the underlying kernel options:
+
+        polarity-tagger -- --help
+
+          EOF
+
+          separator "\nOptions:\n"
+
+          on :v, :version, 'Shows the current version' do
+            abort "polarity-tagger v#{VERSION} on #{RUBY_DESCRIPTION}"
           end
 
-          opts.on('-v', '--version', 'Shows the current version') do
-            show_version
-          end
+          run do |opts, args|
+            tagger = PolarityTagger.new(:args => args)
+            input  = STDIN.tty? ? nil : STDIN.read
 
-          opts.on('-l', '--log', 'Enable logging to STDERR') do
-            @options[:logging] = true
+            puts tagger.run(input)
           end
         end
-
-        option_parser.parse!(component_options)
-        force = false
-        resource_switcher.install(@options, force)
-      end
-
-      ##
-      # @param [String] input
-      #
-      def run(input)
-        tagger = PolarityTagger.new(options)
-
-        stdout, stderr, process = tagger.run(input)
-
-        puts stdout
-      end
-
-      private
-
-      ##
-      # Shows the help message and exits the program.
-      #
-      def show_help
-        abort option_parser.to_s
-      end
-
-      ##
-      # Shows the version and exits the program.
-      #
-      def show_version
-        abort "#{option_parser.program_name} v#{VERSION} on #{RUBY_DESCRIPTION}"
       end
     end # CLI
   end # PolarityTagger

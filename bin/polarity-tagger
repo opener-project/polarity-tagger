@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
+require 'opener/core'
+
 require_relative '../lib/opener/polarity_tagger'
 
-cli = Opener::PolarityTagger::CLI.new(:args => ARGV)
-cli.run(STDIN.tty? ? nil : STDIN.read)
+switcher = Opener::Core::ResourceSwitcher.new
+cli      = Opener::PolarityTagger::CLI.new
+
+switcher.bind(cli.parser)
+
+cli.run

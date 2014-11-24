@@ -1,54 +1,14 @@
 #!/usr/bin/env ruby
 
-require 'puma/cli'
-require 'optparse'
+require 'opener/webservice'
 require 'opener/core'
 
-rack_config   = File.expand_path('../../config.ru', __FILE__)
-switcher      = Opener::Core::ResourceSwitcher.new
-puma_args     = [rack_config]
-switcher_opts = {}
+switcher = Opener::Core::ResourceSwitcher.new
+parser   = Opener::Webservice::OptionParser.new(
+  'opener-polarity-tagger',
+  File.expand_path('../../config.ru', __FILE__)
+)
 
-option_parser = OptionParser.new do |opts|
-  opts.banner = "Usage: #{File.basename($0)} [OPTIONS]"
+switcher.bind(parser.parser)
 
-  opts.separator "\nOptions:\n\n"
-
-  opts.on('-h', '--help', 'Shows this help message') do
-    abort option_parser.to_s
-  end
-
-  opts.on('-S', '--state PATH', 'Where to store the state details') do |val|
-    puma_args += ['--state', val]
-  end
-
-  opts.on('-b', '--bind URI', 'URI to bind to (tcp://, unix://, ssl://)') do |val|
-    puma_args += ['--bind', val]
-  end
-
-  opts.on('--pidfile PATH', 'Use PATH as a pidfile') do |val|
-    puma_args += ['--pidfile', val]
-  end
-
-  opts.on('--daemon', 'Daemonize the server into the background') do |val|
-    puma_args << '--daemon'
-  end
-
-  opts.on('-e', '--environment ENVIRONMENT', 'The environment to use') do |val|
-    puma_args += ['--environment', val]
-  end
-
-  opts.separator "\nResource Options:\n\n"
-
-  switcher.bind(opts, switcher_opts)
-end
-
-option_parser.parse!(ARGV)
-
-switcher.install(switcher_opts)
-
-# Puma on JRuby does some weird stuff with forking/exec. As a result of this we
-# *have to* update ARGV as otherwise running Puma as a daemon does not work.
-ARGV.replace(puma_args)
-
-Puma::CLI.new(ARGV).run
+parser.run

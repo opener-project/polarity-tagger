@@ -1,5 +1,3 @@
-require 'sinatra/base'
-require 'httpclient'
 require 'opener/webservice'
 
 module Opener
@@ -7,10 +5,11 @@ module Opener
     ##
     # Polarity tagger server powered by Sinatra.
     #
-    class Server < Webservice
+    class Server < Webservice::Server
       set :views, File.expand_path('../views', __FILE__)
-      text_processor PolarityTagger
-      accepted_params :input
+
+      self.text_processor  = PolarityTagger
+      self.accepted_params = [:input]
     end # Server
   end # PolarityTagger
 end # Opener
