@@ -175,7 +175,9 @@ At least you need the following system setup:
 
 * Ruby 1.9.3 or newer
 * Python 2.6 or newer
-* Lxml installed
+* lxml installed
+* libarchive, on Debian/Ubuntu based systems this can be installed using
+  `sudo apt-get install libarchive-dev`
 
 Domain Adaption
 ---------------
