@@ -61,7 +61,6 @@ def show_lexicons(language, path=None):
     print '#'*30
     print
 
-
 class LexiconSent:
 
     def __init__(self,language='nl',lexicon_id=None, path=None):
@@ -79,9 +78,7 @@ class LexiconSent:
 
         self.load_resources(language,lexicon_id, path)
 
-
         self.__load_lexicon_xml()
-
 
     def load_resources(self,language,my_id=None, path=None):
         if path is None:
@@ -100,13 +97,8 @@ class LexiconSent:
         self.filename = os.path.join(this_folder,folder_per_lang[language],lexicons[id_to_load][0])
         self.resource = lexicons[id_to_load][1]+" . "+lexicons[id_to_load][2]
 
-
-
-
-
     def getResource(self):
         return self.resource
-
 
     def convert_pos_to_kaf(self,pos):
         my_map = {}
@@ -118,7 +110,6 @@ class LexiconSent:
         my_map['prep']= 'P'
         my_map['verb']= 'V'
         return my_map.get(pos.lower(),'O')
-
 
     def __load_lexicon_xml(self):
         logging.debug('Loading lexicon from the file'+self.filename)
@@ -160,15 +151,11 @@ class LexiconSent:
         logging.debug('Loaded: '+str(len(self.intensifiers))+' intensifiers')
         logging.debug('Loaded: '+str(len(self.sentLex))+' elements with polarity')
 
-
-
     def isIntensifier(self,lemma):
         return lemma in self.intensifiers
 
-
     def isNegator(self,lemma):
       return lemma in self.negators
-
 
     def getPolarity(self,lemma,pos):
       if pos:
