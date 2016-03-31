@@ -178,6 +178,7 @@ At least you need the following system setup:
 * lxml installed
 * libarchive, on Debian/Ubuntu based systems this can be installed using
   `sudo apt-get install libarchive-dev`
+* VUKafParserPy, install with sudo pip install 'https://github.com/opener-project/VU-kaf-parser/archive/v1.1.zip#egg=VUKafParserPy'
 
 Domain Adaption
 ---------------
