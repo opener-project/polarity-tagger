@@ -20,14 +20,15 @@ module Opener
         map lexicons
       end
 
-      POS_KAF_MAP = {
-        adj:   'G',
-        adv:   'A',
-        noun:  'N',
-        other: 'O',
-        prep:  'P',
-        verb:  'V',
-        nil => 'O',
+      POS_SHORT_MAP = {
+        adj:         'G',
+        adv:         'A',
+        noun:        'N',
+        propernoun:  'N',
+        other:       'O',
+        prep:        'P',
+        verb:        'V',
+        nil =>       'O',
         multi_word_expression: 'O',
       }
 
@@ -39,19 +40,20 @@ module Opener
         @intensifiers.find{ |l| l.lemma == lemma }
       end
 
-      def by_polarity lemma, pos
-        l = @with_polarity[[lemma,pos]]
-        return [l || UNKNOWN, pos] if pos
+      def by_polarity lemma, short_pos
+        return [@with_polarity[lemma+short_pos] || UNKNOWN, short_pos] if short_pos
 
-        POS_ORDER.chars.each do |newpos|
-          if l = @with_polarity[[lemma,newpos]]
-            puts "Found polarify #{l.polarity} for #{lemma} with PoS #{newpos}"
-            return [l, newpos]
+        POS_ORDER.chars.each do |short_pos|
+          if l = @with_polarity[lemma+short_pos]
+            puts "Found polarify #{l.polarity} for #{lemma} with PoS #{short_pos}"
+            return [l, short_pos]
           end
         end
 
         [UNKNOWN, 'unknown']
       end
+
+      protected
 
       def map lexicons
         lexicons.each do |l|
@@ -62,8 +64,8 @@ module Opener
           when 'intensifier'     then @intensifiers << l
           else
             if l.polarity
-              short_pos = POS_KAF_MAP[l.pos&.downcase&.to_sym]
-              @with_polarity[[l.lemma, short_pos]] = l
+              short_pos = POS_SHORT_MAP[l.pos&.to_sym]
+              @with_polarity[l.lemma+short_pos] = l
             end
           end
         end
