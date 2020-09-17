@@ -7,7 +7,7 @@ module Opener
       attr_reader :intensifiers
       attr_reader :with_polarity
 
-      POS_ORDER = 'NRVGA'
+      POS_ORDER = 'NRVGAO'
       UNKNOWN   = Hashie::Mash.new polarity: 'unknown'
 
       def initialize lang:, lexicons:
@@ -20,6 +20,8 @@ module Opener
         map lexicons
       end
 
+      DEFAULT_POS = 'O'
+
       POS_SHORT_MAP = {
         adj:         'G',
         adv:         'A',
@@ -28,7 +30,7 @@ module Opener
         other:       'O',
         prep:        'P',
         verb:        'V',
-        nil =>       'O',
+        nil =>       DEFAULT_POS,
         multi_word_expression: 'O',
       }
 
@@ -64,7 +66,7 @@ module Opener
           when 'intensifier'     then @intensifiers[l.lemma] = l
           else
             if l.polarity
-              short_pos = POS_SHORT_MAP[l.pos&.to_sym]
+              short_pos = POS_SHORT_MAP[l.pos&.to_sym] || DEFAULT_POS
               @with_polarity[l.lemma+short_pos] = l
             end
           end

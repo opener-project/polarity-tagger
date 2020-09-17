@@ -25,6 +25,7 @@ module Opener
 
       def load_from_url lang
         url      = "#{@url}&language_code=#{lang}"
+        puts "#{lang}: loading lexicons from url #{url}"
         lexicons = JSON.parse HTTPClient.new.get(url).body
         lexicons = lexicons['data'].map{ |l| Hashie::Mash.new l }
         lexicons
