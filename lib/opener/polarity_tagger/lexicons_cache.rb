@@ -32,6 +32,7 @@ module Opener
       end
 
       def load_from_path lang
+        @path  ||= 'core/general-lexicons'
         dir      = "#{@path}/#{lang.upcase}-lexicon"
         config   = Nokogiri::XML File.read "#{dir}/config.xml"
         lexicons = []
