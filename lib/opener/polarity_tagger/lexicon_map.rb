@@ -10,10 +10,9 @@ module Opener
       POS_ORDER = 'NRVGA'
       UNKNOWN   = Hashie::Mash.new polarity: 'unknown'
 
-      def initialize lang:, lexicons:, resource: nil
+      def initialize lang:, lexicons:
         @lang          = lang
         @lexicons      = lexicons
-        @resource      = resource
 
         @negators      = []
         @intensifiers  = []
