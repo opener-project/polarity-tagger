@@ -26,7 +26,7 @@ module Opener
       # @return [Slop]
       #
       def configure_slop
-        return Slop.new(:strict => false, :indent => 2, :help => true) do
+        Slop.new strict: false, indent: 2, help: true do
           banner 'Usage: polarity-tagger [OPTIONS] -- [PYTHON OPTIONS]'
 
           separator <<-EOF.chomp
@@ -62,6 +62,7 @@ Examples:
           end
         end
       end
-    end # CLI
-  end # PolarityTagger
-end # Opener
+
+    end
+  end
+end

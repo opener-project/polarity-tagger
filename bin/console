@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require_relative '../lib/opener/polarity_tagger'
+
+begin
+  require 'awesome_print'
+  require 'pry'
+  binding.pry
+rescue LoadError
+  require 'irb'
+  IRB.start
+end

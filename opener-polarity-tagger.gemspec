@@ -33,11 +33,13 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'opener-webservice', '~> 2.1'
   gem.add_dependency 'opener-core', '~> 2.2'
 
+  gem.add_dependency 'hashie'
   gem.add_dependency 'rake'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'cliver'
   gem.add_dependency 'slop', '~> 3.5'
 
+  gem.add_development_dependency 'pry'
   gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'cucumber'
 end

@@ -1,106 +1,27 @@
 require 'open3'
 require 'opener/core'
+require 'nokogiri'
+require 'hashie'
 
 require_relative 'polarity_tagger/version'
 require_relative 'polarity_tagger/cli'
+require_relative 'polarity_tagger/external'
+
+require_relative 'polarity_tagger/internal'
 
 module Opener
-  ##
-  # Ruby wrapper around the Python based polarity tagger.
-  #
-  # @!attribute [r] options
-  #  @return [Hash]
-  #
-  # @!attribute [r] args
-  #  @return [Array]
-  #
   class PolarityTagger
-    attr_reader :options, :args
 
-    ##
-    # @param [Hash] options
-    #
-    # @option options [Array] :args Collection of arbitrary arguments to pass
-    #  to the underlying kernel.
-    #
-    # @option options [String] :resource_path Path to the lexicons to use.
-    #
-    def initialize(options = {})
+    def initialize options = {}
       @args    = options.delete(:args) || []
       @options = options
+      @klass   = if ENV['LEGACY'] then External else Internal end
+      @proc    = @klass.new args: @args
     end
 
-    ##
-    # Returns a String containing the command to use for executing the kernel.
-    #
-    # @return [String]
-    #
-    def command
-      return "#{adjust_python_path} python -E #{kernel} #{lexicon_path} #{args.join(" ")}"
+    def run input
+      @proc.run input
     end
 
-    ##
-    # @return [String]
-    #
-    def lexicon_path
-      path = options[:resource_path] || ENV['RESOURCE_PATH'] ||
-        ENV['POLARITY_LEXICON_PATH']
-
-      return path ? "--lexicon-path #{path}" : nil
-    end
-
-    ##
-    # Processes the input and returns an Array containing the output of STDOUT,
-    # STDERR and an object containing process information.
-    #
-    # @param [String] input The text of which to detect the language.
-    # @return [Array]
-    #
-    def run(input)
-      stdout, stderr, process = capture(input)
-
-      raise stderr unless process.success?
-
-      return stdout
-    end
-
-    protected
-
-    ##
-    # @return [String]
-    #
-    def adjust_python_path
-      site_packages =  File.join(core_dir, 'site-packages')
-
-      "env PYTHONPATH=#{site_packages}:$PYTHONPATH"
-    end
-
-    ##
-    # capture3 method doesn't work properly with Jruby, so
-    # this is a workaround
-    #
-    def capture(input)
-      Open3.popen3(*command.split(" ")) {|i, o, e, t|
-        out_reader = Thread.new { o.read }
-        err_reader = Thread.new { e.read }
-        i.write input
-        i.close
-        [out_reader.value, err_reader.value, t.value]
-      }
-    end
-
-    ##
-    # @return [String]
-    #
-    def core_dir
-      return File.expand_path('../../../core', __FILE__)
-    end
-
-    ##
-    # @return [String]
-    #
-    def kernel
-      return File.join(core_dir, 'poltagger-basic-multi.py')
-    end
-  end # PolarityTagger
-end # Opener
+  end
+end
