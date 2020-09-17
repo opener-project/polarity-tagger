@@ -14,8 +14,8 @@ module Opener
         @lang          = lang
         @lexicons      = lexicons
 
-        @negators      = []
-        @intensifiers  = []
+        @negators      = {}
+        @intensifiers  = {}
         @with_polarity = {}
         map lexicons
       end
@@ -33,11 +33,11 @@ module Opener
       }
 
       def by_negator lemma
-        @negators.find{ |l| l.lemma == lemma }
+        @negators[lemma]
       end
 
       def by_intensifier lemma
-        @intensifiers.find{ |l| l.lemma == lemma }
+        @intensifiers[lemma]
       end
 
       def by_polarity lemma, short_pos
@@ -60,8 +60,8 @@ module Opener
           next if l.lemma.nil?
 
           case l.type
-          when 'polarityShifter' then @negators     << l
-          when 'intensifier'     then @intensifiers << l
+          when 'polarityShifter' then @negators[l.lemma]     = l
+          when 'intensifier'     then @intensifiers[l.lemma] = l
           else
             if l.polarity
               short_pos = POS_SHORT_MAP[l.pos&.to_sym]
