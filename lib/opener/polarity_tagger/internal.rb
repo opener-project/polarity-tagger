@@ -10,15 +10,15 @@ module Opener
       LAST_EDITED = '21may2014'
       VERSION     = '1.2'
 
-      def initialize ignore_pos: false, **params
-        @cache = LexiconsCache.new
+      CACHE = LexiconsCache.new
 
+      def initialize ignore_pos: false, **params
         @ignore_pos = ignore_pos
       end
 
       def run input
         @kaf = KAF::Document.from_xml input
-        @map = @kaf.map = @cache[@kaf.language]
+        @map = @kaf.map = CACHE[@kaf.language]
 
         negators = 0
         @kaf.terms.each do |t|
@@ -33,11 +33,11 @@ module Opener
           end
           if l = @map.by_negator(lemma)
             negators += 1
-            lexicon, polarity = l, nil
+            lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'shifter'
           end
           if l = @map.by_intensifier(lemma)
-            lexicon, polarity = l, nil
+            lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'intensifier'
           end
 

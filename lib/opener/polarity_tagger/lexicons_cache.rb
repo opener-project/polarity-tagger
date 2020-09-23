@@ -2,8 +2,9 @@ module Opener
   class PolarityTagger
     class LexiconsCache
 
+      include MonitorMixin
+
       def initialize
-        extend MonitorMixin
         super #MonitorMixin
 
         @url   = ENV['POLARITY_LEXICON_URL']
