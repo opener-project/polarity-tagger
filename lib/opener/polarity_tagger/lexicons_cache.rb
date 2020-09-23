@@ -4,6 +4,7 @@ module Opener
 
       def initialize
         extend MonitorMixin
+        super #MonitorMixin
 
         @url   = ENV['POLARITY_LEXICON_URL']
         @path  = ENV['POLARITY_LEXICON_PATH']
