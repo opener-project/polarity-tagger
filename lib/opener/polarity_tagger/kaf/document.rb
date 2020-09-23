@@ -26,9 +26,9 @@ module Opener
       end
 
       def add_linguistic_processor name, version, layer, timestamp: false
-        header  = @document.at('kafHeader') || @document.root.add_child('<kafHeader/>')
+        header  = @document.at('kafHeader') || @document.root.add_child('<kafHeader/>').first
         procs   = header.css('linguisticProcessors').find{ |l| l.attr(:layer) == layer }
-        procs ||= header.add_child("<linguisticProcessors layer='#{layer}'/>")
+        procs ||= header.add_child("<linguisticProcessors layer='#{layer}'/>").first
         lp      = procs.add_child('<lp/>')
         lp.attr(
           timestamp: if timestamp then Time.now.iso8601 else '*' end,
