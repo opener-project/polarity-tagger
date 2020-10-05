@@ -2,6 +2,7 @@ require 'open3'
 require 'opener/core'
 require 'nokogiri'
 require 'hashie'
+require 'active_support/all'
 
 require_relative 'polarity_tagger/version'
 require_relative 'polarity_tagger/cli'
@@ -19,8 +20,12 @@ module Opener
       @proc    = @klass.new args: @args
     end
 
-    def run input
-      @proc.run input
+    def clear_cache params = {}
+      @proc.clear_cache(**params)
+    end
+
+    def run input, params = {}
+      @proc.run input, params
     end
 
   end

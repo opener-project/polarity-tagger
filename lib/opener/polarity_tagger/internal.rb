@@ -16,11 +16,16 @@ module Opener
         @ignore_pos = ignore_pos
       end
 
-      def run input
-        @kaf = KAF::Document.from_xml input
-        @map = @kaf.map = CACHE[@kaf.language]
+      def clear_cache lang: nil, environment:
+      end
 
-        negators = 0
+      def run input, params = {}
+        @kaf = KAF::Document.from_xml input
+
+        @cache_keys = params[:cache_keys] ||= {}
+        @cache_keys.merge! lang: @kaf.language
+        @map = @kaf.map = CACHE[**@cache_keys].lexicons
+
         @kaf.terms.each do |t|
           lemma = t.lemma&.downcase
           pos   = if @ignore_pos then nil else t.pos end
@@ -32,7 +37,6 @@ module Opener
             attrs.polarity = lexicon.polarity
           end
           if l = @map.by_negator(lemma)
-            negators += 1
             lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'shifter'
           end

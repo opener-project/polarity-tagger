@@ -52,7 +52,7 @@ module Opener
       # @param [String] input The text of which to detect the language.
       # @return [Array]
       #
-      def run(input)
+      def run input, params
         stdout, stderr, process = capture(input)
 
         raise stderr unless process.success?

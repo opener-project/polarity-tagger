@@ -7,21 +7,10 @@ module Opener
       attr_reader :intensifiers
       attr_reader :with_polarity
 
-      POS_ORDER = 'NRVGAO'
-      UNKNOWN   = Hashie::Mash.new polarity: 'unknown'
+      UNKNOWN = Hashie::Mash.new polarity: 'unknown'
 
-      def initialize lang:, lexicons:
-        @lang          = lang
-        @lexicons      = lexicons
-
-        @negators      = {}
-        @intensifiers  = {}
-        @with_polarity = {}
-        map lexicons
-      end
-
-      DEFAULT_POS = 'O'
-
+      POS_ORDER     = 'NRVGAO'
+      DEFAULT_POS   = 'O'
       POS_SHORT_MAP = {
         adj:         'G',
         adv:         'A',
@@ -33,6 +22,20 @@ module Opener
         nil =>       DEFAULT_POS,
         multi_word_expression: 'O',
       }
+
+      def initialize lang:, lexicons:
+        @lang          = lang
+        @lexicons      = lexicons
+
+        @negators      = {}
+        @intensifiers  = {}
+        @with_polarity = {}
+        map lexicons
+      end
+
+      def blank?
+        @lexicons.blank?
+      end
 
       def by_negator lemma
         @negators[lemma]
