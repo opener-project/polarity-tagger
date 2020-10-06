@@ -14,18 +14,27 @@ module Opener
 
       def [] **params
         synchronize do
-          existing = @cache[params]
-          lexicons = load_lexicons cache: existing, **params
-
-          @cache[params] = if lexicons.blank? then existing else
-            Hashie::Mash.new(
-              lexicons: lexicons,
-              from:     Time.now,
-            )
+          if existing = @cache[params]
+            existing.tap do
+              Thread.new{ @cache[params] = cache_update existing, **params }
+            end
+          else
+            @cache[params] = cache_update **params
           end
         end
       end
       alias_method :get, :[]
+
+      def cache_update existing = nil, **params
+        from     = Time.now
+        lexicons = load_lexicons cache: existing, **params
+
+        return existing if existing and lexicons.blank?
+        Hashie::Mash.new(
+          lexicons: lexicons,
+          from:     from,
+        )
+      end
 
       def load_lexicons lang:, **params
         lexicons = if @url then load_from_url lang: lang, **params else load_from_path lang: lang, **params end

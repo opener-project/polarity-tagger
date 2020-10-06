@@ -61,6 +61,8 @@ module Opener
       protected
 
       def map lexicons
+        return if blank?
+
         lexicons.each do |l|
           next if l.lemma.nil?
 
