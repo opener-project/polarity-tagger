@@ -4,6 +4,8 @@ module Opener
 
       include MonitorMixin
 
+      UPDATE_INTERVAL = (ENV['CACHE_EXPIRE_MINS']&.to_i || 5).minutes
+
       def initialize
         super #MonitorMixin
 
@@ -14,13 +16,9 @@ module Opener
 
       def [] **params
         synchronize do
-          if existing = @cache[params]
-            existing.tap do
-              Thread.new{ @cache[params] = cache_update existing, **params }
-            end
-          else
-            @cache[params] = cache_update **params
-          end
+          existing = @cache[params]
+          break existing if existing and existing.from > UPDATE_INTERVAL.ago
+          @cache[params] = cache_update existing, **params
         end
       end
       alias_method :get, :[]
@@ -29,7 +27,11 @@ module Opener
         from     = Time.now
         lexicons = load_lexicons cache: existing, **params
 
-        return existing if existing and lexicons.blank?
+        if existing and lexicons.blank?
+          existing.from = from
+          return existing
+        end
+
         Hashie::Mash.new(
           lexicons: lexicons,
           from:     from,
@@ -47,7 +49,7 @@ module Opener
         url += "&if_updated_since=#{cache.from.iso8601}" if cache
         puts "#{lang}: loading lexicons from url #{url}"
 
-        lexicons = JSON.parse HTTPClient.new.get(url).body
+        lexicons = JSON.parse http.get(url).body
         lexicons = lexicons['data'].map{ |l| Hashie::Mash.new l }
         lexicons
       end
@@ -81,6 +83,16 @@ module Opener
         end
 
         lexicons
+      end
+
+      def http
+        return @http if @http
+
+        @http = HTTPClient.new
+        @http.send_timeout    = 120
+        @http.receive_timeout = 120
+        @http.connect_timeout = 120
+        @http
       end
 
     end
