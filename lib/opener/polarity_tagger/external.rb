@@ -32,7 +32,7 @@ module Opener
       # @return [String]
       #
       def command
-        return "#{adjust_python_path} python -E #{kernel} #{lexicon_path} #{args.join(" ")}"
+        "#{adjust_python_path} python2 -E #{kernel} #{lexicon_path} #{args.join(" ")}"
       end
 
       ##
