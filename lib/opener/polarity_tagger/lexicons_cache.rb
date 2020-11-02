@@ -46,7 +46,7 @@ module Opener
 
       def load_from_url lang:, cache:, **params
         url  = "#{@url}&language_code=#{lang}&#{params.to_query}"
-        url += "&if_updated_since=#{cache.from.iso8601}" if cache
+        url += "&if_updated_since=#{cache.from.utc.iso8601}" if cache
         puts "#{lang}: loading lexicons from url #{url}"
 
         lexicons = JSON.parse http.get(url).body
