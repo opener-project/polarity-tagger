@@ -16,11 +16,11 @@ module Opener
         adv:         'A',
         noun:        'N',
         propernoun:  'N',
-        other:       'O',
         prep:        'P',
         verb:        'V',
+        other:       DEFAULT_POS,
         nil =>       DEFAULT_POS,
-        multi_word_expression: 'O',
+        multi_word_expression: DEFAULT_POS,
       }
 
       def initialize lang:, lexicons:

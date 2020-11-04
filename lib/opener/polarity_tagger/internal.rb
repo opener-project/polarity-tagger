@@ -26,6 +26,8 @@ module Opener
         @cache_keys.merge! lang: @kaf.language
         @map = @kaf.map = CACHE[**@cache_keys].lexicons
 
+        raise Opener::Core::UnsupportedLanguageError, kaf.language if @map.blank?
+
         @kaf.terms.each do |t|
           lemma = t.lemma&.downcase
           pos   = if @ignore_pos then nil else t.pos end
