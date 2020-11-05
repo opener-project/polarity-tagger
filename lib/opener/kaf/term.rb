@@ -18,6 +18,10 @@ module Opener
         @node.attr :lemma
       end
 
+      def text
+        @node.attr :text
+      end
+
       def pos
         @node.attr :pos
       end
