@@ -1,6 +1,6 @@
 require_relative 'lexicons_cache'
 require_relative 'lexicon_map'
-require_relative 'kaf/document'
+require_relative '../kaf/document'
 
 module Opener
   class PolarityTagger
@@ -30,19 +30,21 @@ module Opener
 
         @kaf.terms.each do |t|
           lemma = t.lemma&.downcase
+          text  = t.text.to_s.downcase
           pos   = if @ignore_pos then nil else t.pos end
           attrs = Hashie::Mash.new
 
           lexicon, polarity_pos = @map.by_polarity lemma, pos
+          lexicon, polarity_pos = @map.by_polarity text, pos if lexicon.polarity == 'unknown'
 
           if lexicon.polarity != 'unknown'
             attrs.polarity = lexicon.polarity
           end
-          if l = @map.by_negator(lemma)
+          if l = @map.by_negator(lemma) || @map.by_negator(text)
             lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'shifter'
           end
-          if l = @map.by_intensifier(lemma)
+          if l = @map.by_intensifier(lemma) || @map.by_intensifier(text)
             lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'intensifier'
           end
