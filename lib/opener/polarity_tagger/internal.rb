@@ -16,9 +16,6 @@ module Opener
         @ignore_pos = ignore_pos
       end
 
-      def clear_cache lang: nil, environment:
-      end
-
       def run input, params = {}
         @kaf = KAF::Document.from_xml input
 
