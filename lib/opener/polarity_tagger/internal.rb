@@ -17,15 +17,15 @@ module Opener
       end
 
       def run input, params = {}
-        @kaf = KAF::Document.from_xml input
+        kaf = KAF::Document.from_xml input
 
         @cache_keys = params[:cache_keys] ||= {}
-        @cache_keys.merge! lang: @kaf.language
-        @map = @kaf.map = CACHE[**@cache_keys].lexicons
+        @cache_keys.merge! lang: kaf.language
+        @map = kaf.map = CACHE[**@cache_keys].lexicons
 
-        raise Opener::Core::UnsupportedLanguageError, @kaf.language if @map.blank?
+        raise Opener::Core::UnsupportedLanguageError, kaf.language if @map.blank?
 
-        @kaf.terms.each do |t|
+        kaf.terms.each do |t|
           lemma = t.lemma&.downcase
           text  = t.text.to_s.downcase
           pos   = if @ignore_pos then nil else t.pos end
@@ -52,9 +52,9 @@ module Opener
           end
         end
 
-        @kaf.add_linguistic_processor DESC, "#{LAST_EDITED}_#{VERSION}", 'terms'
+        kaf.add_linguistic_processor DESC, "#{LAST_EDITED}_#{VERSION}", 'terms'
 
-        @kaf.to_xml
+        kaf.to_xml
       end
 
     end
