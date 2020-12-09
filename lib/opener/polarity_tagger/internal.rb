@@ -31,19 +31,19 @@ module Opener
           pos   = if @ignore_pos then nil else t.pos end
           attrs = Hashie::Mash.new
 
-          lexicon, polarity_pos = @map.by_polarity lemma, pos
-          lexicon, polarity_pos = @map.by_polarity text, pos if lexicon.polarity == 'unknown'
+          # text matching have priority as sometimes
+          # the lemma provided by Stanza is a different word
+          lexicon, polarity_pos = @map.by_polarity text, pos
+          lexicon, polarity_pos = @map.by_polarity lemma, pos if lexicon.polarity == 'unknown'
 
-          if lexicon.polarity != 'unknown'
-            attrs.polarity = lexicon.polarity
-          end
-          if l = @map.by_negator(lemma) || @map.by_negator(text)
+          if l = @map.by_negator(text) || @map.by_negator(lemma)
             lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'shifter'
-          end
-          if l = @map.by_intensifier(lemma) || @map.by_intensifier(text)
+          elsif l = @map.by_intensifier(text) || @map.by_intensifier(lemma)
             lexicon, polarity_pos = l, nil
             attrs.sentiment_modifier = 'intensifier'
+          elsif lexicon.polarity != 'unknown'
+            attrs.polarity = lexicon.polarity
           end
 
           if attrs.size > 0

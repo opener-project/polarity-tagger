@@ -21,15 +21,28 @@ class Nokogiri::XML::Attr
 end
 
 Then /^the output should match the fixture "(.*?)"$/ do |filename|
-  fo = Nokogiri::XML File.read(fixture_file(filename))
-  go = Nokogiri::XML File.read(@output)
+  i = Nokogiri::XML File.read @output
+  o = Nokogiri::XML File.read fixture_file(filename)
 
-  expect(go.css(:lp).last.attributes).to eq fo.css(:lp).last.attributes
+  expect(i.css(:lp).last.attributes).to eq o.css(:lp).last.attributes
 
-  go.css('term sentiment').zip(fo.css('term sentiment')).each do |gs, fs|
-    expect(gs.attr(:lemma)).to    eq fs.attr(:lemma)
-    expect(gs.attr(:pos)).to      eq fs.attr(:pos)
-    expect(gs.attr(:polarity)).to eq fs.attr(:polarity)
+  iterms = i.css('term').each.with_object({}) do |t, h|
+    h[t.attr(:lemma)] = t
+  end
+  oterms = o.css('term').each.with_object({}) do |t, h|
+    h[t.attr(:lemma)] = t
+  end
+
+  oterms.each do |lemma, ot|
+    it = iterms[lemma]
+    expect(ot).to_not eq nil
+
+    is = it.at(:sentiment)
+    os = ot.at(:sentiment)
+    next puts "\n#{lemma}: extra sentiment found: #{is.inspect}\n" if os.nil? and !is.nil?
+    next expect(is).to eq nil if os.nil?
+    expect(is.attr(:pos)).to      eq os.attr(:pos)
+    expect(is.attr(:polarity)).to eq os.attr(:polarity)
   end
 end
 

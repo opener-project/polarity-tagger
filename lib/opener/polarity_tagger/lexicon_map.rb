@@ -46,13 +46,12 @@ module Opener
       end
 
       def by_polarity lemma, short_pos
-        return [@with_polarity[lemma+short_pos] || UNKNOWN, short_pos] if short_pos
+        l = @with_polarity[lemma+short_pos] if short_pos
+        return [l, short_pos] if l
 
         POS_ORDER.chars.each do |short_pos|
-          if l = @with_polarity[lemma+short_pos]
-            puts "Found polarify #{l.polarity} for #{lemma} with PoS #{short_pos}"
-            return [l, short_pos]
-          end
+          l = @with_polarity[lemma+short_pos]
+          return [l, short_pos] if l
         end
 
         [UNKNOWN, 'unknown']
