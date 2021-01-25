@@ -59,6 +59,14 @@ module Opener
 
       protected
 
+      def map_one_polarity l
+        poses = if l.poses.present? then l.poses else [l.pos] end
+        poses.each do |pos|
+          short_pos = POS_SHORT_MAP[pos&.to_sym] || DEFAULT_POS
+          @with_polarity[l.lemma+short_pos] = l
+        end
+      end
+
       def map lexicons
         return if blank?
 
@@ -70,8 +78,10 @@ module Opener
           when 'intensifier'     then @intensifiers[l.lemma] = l
           else
             if l.polarity
-              short_pos = POS_SHORT_MAP[l.pos&.to_sym] || DEFAULT_POS
-              @with_polarity[l.lemma+short_pos] = l
+              map_one_polarity l
+              l.variants&.each do |v|
+                map_one_polarity v
+              end
             end
           end
         end

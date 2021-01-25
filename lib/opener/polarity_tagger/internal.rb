@@ -47,7 +47,8 @@ module Opener
           end
 
           if attrs.size > 0
-            attrs.resource = lexicon.resource if lexicon.resource
+            attrs['lexicon-id'] = lexicon.id.to_s  if lexicon.id
+            attrs.resource      = lexicon.resource if lexicon.resource
             t.setPolarity attrs, polarity_pos
           end
         end
