@@ -128,6 +128,7 @@
       <span>
         <target id="w11"/>
       </span>
+    <sentiment polarity="positive" resource="CNR_general_lexicon_italian"/>
     </term>
     <term lemma="percorso" morphofeat="NOU~CSMS" pos="N" tid="t12" type="">
       <span>
@@ -149,6 +150,7 @@
       <span>
         <target id="w15"/>
       </span>
+    <sentiment polarity="positive" resource="CNR_general_lexicon_italian"/>
     </term>
     <term lemma="serata" morphofeat="NOU~CSFS" pos="N" tid="t16" type="">
       <span>
@@ -172,6 +174,7 @@
       <span>
         <target id="w19"/>
       </span>
+    <sentiment polarity="positive" resource="CNR_general_lexicon_italian"/>
     </term>
     <term lemma="fine" morphofeat="ADJ~QUNS" pos="G" tid="t20" type="">
       <span>
@@ -225,6 +228,7 @@
       <span>
         <target id="w29"/>
       </span>
+      <sentiment polarity="neutral" resource="CNR_general_lexicon_italian"/>
     </term>
     <term lemma="lo" morphofeat="ART~DFP" pos="D" tid="t30" type="">
       <span>

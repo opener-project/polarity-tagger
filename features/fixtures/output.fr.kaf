@@ -147,6 +147,7 @@
         <!--notre-->
         <target id="w2"/>
       </span>
+      <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="séjour" morphofeat="NCms" pos="N" tid="t3" type="open">
       <span>
@@ -277,6 +278,7 @@
         <!--mais-->
         <target id="w23"/>
       </span>
+      <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="pas" morphofeat="ADV" pos="G" tid="t24" type="open">
       <span>
@@ -445,6 +447,7 @@
         <!--chaque-->
         <target id="w50"/>
       </span>
+      <sentiment polarity="neutral" resource="General domain lexicon for French .Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="foi" morphofeat="NCfp" pos="N" tid="t51" type="open">
       <span>
@@ -470,6 +473,7 @@
         <!--fermer-->
         <target id="w54"/>
       </span>
+      <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="le" morphofeat="Dfp" pos="D" tid="t55" type="close">
       <span>
@@ -482,6 +486,7 @@
         <!--pages-->
         <target id="w56"/>
       </span>
+    <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t57" type="close">
       <span>
@@ -542,6 +547,7 @@
         <!--nouveau-->
         <target id="w66"/>
       </span>
+      <sentiment polarity="positive" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t67" type="close">
       <span>
@@ -554,6 +560,7 @@
         <!--des-->
         <target id="w68"/>
       </span>
+    <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="foi" morphofeat="NCfp" pos="N" tid="t69" type="open">
       <span>
@@ -716,6 +723,7 @@
         <!--froid-->
         <target id="w94"/>
       </span>
+    <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="et" morphofeat="CC" pos="C" tid="t95" type="close">
       <span>
@@ -734,6 +742,7 @@
         <!--devait-->
         <target id="w97"/>
       </span>
+      <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="se" morphofeat="CL3ms" pos="Q" tid="t98" type="close">
       <span>
@@ -758,6 +767,7 @@
         <!--une-->
         <target id="w101"/>
       </span>
+    <sentiment polarity="neutral" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="eau" morphofeat="NCfs" pos="N" tid="t102" type="open">
       <span>
@@ -862,6 +872,7 @@
         <!--ne-->
         <target id="w118"/>
       </span>
+      <sentiment polarity="negative" resource="General domain lexicon for French . Vicomtech_general_lexicon_french"/>
     </term>
     <term lemma="donner" morphofeat="VP3s" pos="V" tid="t119" type="open">
       <span>

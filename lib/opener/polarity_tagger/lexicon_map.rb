@@ -7,9 +7,7 @@ module Opener
       attr_reader :intensifiers
       attr_reader :with_polarity
 
-      UNKNOWN = Hashie::Mash.new polarity: 'unknown'
-
-      POS_ORDER     = 'NRVGAO'
+      POS_ORDER     = 'ONRVGA'
       DEFAULT_POS   = 'O'
       POS_SHORT_MAP = {
         adj:         'G',
@@ -45,43 +43,56 @@ module Opener
         @intensifiers[lemma]
       end
 
-      def by_polarity lemma, short_pos
-        l = @with_polarity[lemma+short_pos] if short_pos
-        return [l, short_pos] if l
+      def by_polarity lemma, identified_short_pos
+        hash = Hashie::Mash.new multi: (@with_polarity[lemma] || [])
 
-        POS_ORDER.chars.each do |short_pos|
-          l = @with_polarity[lemma+short_pos]
-          return [l, short_pos] if l
+        if identified_short_pos and lexicon = @with_polarity[lemma+identified_short_pos]
+          hash[:single] = lexicon
+          return [hash, identified_short_pos]
         end
 
-        [UNKNOWN, 'unknown']
+        POS_ORDER.chars.each do |short_pos|
+          if lexicon = @with_polarity[lemma+short_pos]
+            hash[:single] = lexicon
+            return [hash, identified_short_pos]
+          end
+        end
+
+        [hash, 'unknown']
       end
 
       protected
 
-      def map_one_polarity l
-        poses = if l.poses.present? then l.poses else [l.pos] end
-        poses.each do |pos|
-          short_pos = POS_SHORT_MAP[pos&.to_sym] || DEFAULT_POS
-          @with_polarity[l.lemma+short_pos] = l
-        end
-      end
-
       def map lexicons
         return if blank?
 
-        lexicons.each do |l|
-          next if l.lemma.nil?
+        lexicons.each do |lexicon|
+          next if lexicon.lemma.nil?
 
-          case l.type
-          when 'polarityShifter' then @negators[l.lemma]     = l
-          when 'intensifier'     then @intensifiers[l.lemma] = l
-          else
-            if l.polarity
-              map_one_polarity l
-              l.variants&.each do |v|
-                map_one_polarity v
+          sub_lexicons = [lexicon]
+          sub_lexicons += lexicon.variants if lexicon.variants
+
+          sub_lexicons.each do |variant|
+            if variant.lemma.strip.include? ' '
+              lemma = variant.lemma.strip.split(' ').first
+              type = :multi
+            else
+              lemma = variant.lemma
+              type = :single
+            end
+
+            if ['polarityShifter', 'intensifier'].include? lexicon.type
+              var = @negators if lexicon.type == 'polarityShifter'
+              var = @intensifiers if lexicon.type == 'intensifier'
+
+              var[lemma] ||= Hashie::Mash.new multi: []
+              if type == :multi
+                var[lemma][:multi] << lexicon
+              else
+                var[lemma][:single] = lexicon
               end
+            else
+              map_one_polarity lemma, variant, lexicon if lexicon.polarity
             end
           end
         end
@@ -89,6 +100,19 @@ module Opener
         puts "#{@lang}: loaded #{@negators.size} negators"
         puts "#{@lang}: loaded #{@intensifiers.size} intensifiers"
         puts "#{@lang}: loaded #{@with_polarity.size} elements with polarity"
+      end
+
+      def map_one_polarity lemma, hash, lexicon
+        poses = if hash.poses.present? then hash.poses else [hash.pos] end
+        poses.each do |pos|
+          short_pos = POS_SHORT_MAP[pos&.to_sym] || DEFAULT_POS
+          @with_polarity[lemma] ||= []
+          if hash.lemma.strip.include? ' '
+            @with_polarity[lemma] << lexicon
+          else
+            @with_polarity[lemma+short_pos] = lexicon
+          end
+        end
       end
 
     end

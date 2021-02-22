@@ -15,6 +15,15 @@
          </Sense>
       </LexicalEntry>
       <LexicalEntry id="" partOfSpeech="noun">
+         <Lemma writtenForm="very comfortable"/>
+         <Sense>
+            <Confidence level="manual"/>
+            <MonolingualExternalRef/>
+            <Sentiment polarity="negative" strength="strong"/>
+            <Domain/>
+         </Sense>
+      </LexicalEntry>
+      <LexicalEntry id="" partOfSpeech="noun">
          <Lemma writtenForm="abandonment"/>
          <Sense>
             <Confidence level="manual"/>

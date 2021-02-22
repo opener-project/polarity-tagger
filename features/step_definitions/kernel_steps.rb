@@ -1,9 +1,9 @@
-Given /^the fixture file "(.*?)"$/ do |filename|
+Given(/^the fixture file "(.*?)"$/) do |filename|
   @input    = fixture_file(filename)
   @filename = filename
 end
 
-Given /^I put it through the kernel$/ do
+Given(/^I put it through the kernel$/) do
   @tmp_filename = "output_#{rand(1000)}_#{@filename}"
   @output       = tmp_file(@tmp_filename)
   input         = File.read(@input)
@@ -20,29 +20,43 @@ class Nokogiri::XML::Attr
   end
 end
 
-Then /^the output should match the fixture "(.*?)"$/ do |filename|
-  i = Nokogiri::XML File.read @output
-  o = Nokogiri::XML File.read fixture_file(filename)
+Then(/^the output should match the fixture "(.*?)"$/) do |filename|
+  output  = Nokogiri::XML File.read @output
+  fixture = Nokogiri::XML File.read fixture_file(filename)
 
-  expect(i.css(:lp).last.attributes).to eq o.css(:lp).last.attributes
+  expect(output.css(:lp).last.attributes).to eq fixture.css(:lp).last.attributes
 
-  iterms = i.css('term').each.with_object({}) do |t, h|
+  output_terms = output.css('term').each.with_object({}) do |t, h|
     h[t.attr(:lemma)] = t
   end
-  oterms = o.css('term').each.with_object({}) do |t, h|
+  fixture_terms = fixture.css('term').each.with_object({}) do |t, h|
     h[t.attr(:lemma)] = t
   end
 
-  oterms.each do |lemma, ot|
-    it = iterms[lemma]
+  check_terms output_terms, fixture_terms
+
+end
+
+def check_terms output_terms, fixture_terms
+  output_terms.each do |lemma, ot|
+    ft = fixture_terms[lemma]
+
     expect(ot).to_not eq nil
+    expect(ft).to_not eq nil
 
-    is = it.at(:sentiment)
+    fs = ft.at(:sentiment)
     os = ot.at(:sentiment)
-    next puts "\n#{lemma}: extra sentiment found: #{is.inspect}\n" if os.nil? and !is.nil?
-    next expect(is).to eq nil if os.nil?
-    expect(is.attr(:pos)).to      eq os.attr(:pos)
-    expect(is.attr(:polarity)).to eq os.attr(:polarity)
+    next if os.nil? and fs.nil?
+    #next puts "\n#{lemma}: extra sentiment found: #{fs.inspect}\n" if os.nil? and !fs.nil?
+
+    log 'missing fs:' if fs.nil?
+    log ft.attr(:lemma).to_s if fs.nil?
+
+    next expect(fs).to eq nil if os.nil?
+    next expect(os).to eq nil if fs.nil?
+
+    expect(fs.attr(:pos)).to      eq os.attr(:pos)
+    expect(fs.attr(:polarity)).to eq os.attr(:polarity)
   end
 end
 

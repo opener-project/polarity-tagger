@@ -88,12 +88,14 @@
       <span>
         <target id="w3"/>
       </span>
+    <sentiment polarity="positive" resource="VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--defiantly-->
     <term type="open" lemma="defiantly" pos="A" morphofeat="RB" tid="t4">
       <span>
         <target id="w4"/>
       </span>
+    <sentiment polarity="negative" resource="VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--return-->
     <term type="open" lemma="return" pos="V" morphofeat="VB" tid="t5">
@@ -142,6 +144,7 @@
       <span>
         <target id="w12"/>
       </span>
+    <sentiment polarity="positive" resource="VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--,-->
     <term type="close" lemma="," pos="O" morphofeat="," tid="t13">
@@ -228,13 +231,14 @@
       <span>
         <target id="w26"/>
       </span>
+    <sentiment polarity="negative" resource="VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--comfortable-->
     <term type="open" lemma="comfortable" pos="G" morphofeat="JJ" tid="t27">
       <span>
         <target id="w27"/>
       </span>
-      <sentiment polarity="positive" resource="General lexicon for English . VUA_olery_lexicon_EN_lmf"/>
+      <sentiment polarity="negative" resource="General lexicon for English . VUA_olery_lexicon_EN_lmf"/>
     </term>
     <!--,-->
     <term type="close" lemma="," pos="O" morphofeat="," tid="t28">

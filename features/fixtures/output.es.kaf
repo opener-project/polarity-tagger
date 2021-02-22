@@ -194,6 +194,7 @@
       <span>
         <target id="w2"/>
       </span>
+    <sentiment polarity="positive" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--Me-->
     <term tid="t3" type="close" lemma="me" pos="Q" morphofeat="PRP">
@@ -236,6 +237,7 @@
       <span>
         <target id="w9"/>
       </span>
+    <sentiment polarity="positive" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--buffet-->
     <term tid="t10" type="open" lemma="buffet" pos="N" morphofeat="NN">
@@ -272,6 +274,7 @@
       <span>
         <target id="w15"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--a-->
     <term tid="t16" type="close" lemma="a" pos="D" morphofeat="DT">
@@ -339,6 +342,7 @@
       <span>
         <target id="w26"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--la-->
     <term tid="t27" type="close" lemma="la" pos="D" morphofeat="DT">
@@ -405,12 +409,14 @@
       <span>
         <target id="w37"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--calzado-->
     <term tid="t38" type="close" lemma="calzado" pos="O" morphofeat="FW">
       <span>
         <target id="w38"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--de-->
     <term tid="t39" type="close" lemma="de" pos="O" morphofeat="FW">
@@ -423,6 +429,7 @@
       <span>
         <target id="w40"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--,-->
     <term tid="t41" type="close" lemma="," pos="O" morphofeat=",">
@@ -472,6 +479,7 @@
       <span>
         <target id="w48"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--la-->
     <term tid="t49" type="close" lemma="la" pos="O" morphofeat="FW">
@@ -490,6 +498,7 @@
       <span>
         <target id="w51"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--cubre.t-->
     <term tid="t52" type="close" lemma="cubre.t" pos="O" morphofeat="FW">
@@ -520,6 +529,7 @@
       <span>
         <target id="w56"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--la-->
     <term tid="t57" type="close" lemma="la" pos="D" morphofeat="DT">
@@ -562,12 +572,14 @@
       <span>
         <target id="w63"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--suerte-->
     <term tid="t64" type="open" lemma="suerte" pos="G" morphofeat="JJ">
       <span>
         <target id="w64"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--para-->
     <term tid="t65" type="open" lemma="para" pos="N" morphofeat="NN">
@@ -598,6 +610,7 @@
       <span>
         <target id="w69"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--,-->
     <term tid="t70" type="close" lemma="," pos="O" morphofeat=",">
@@ -616,6 +629,7 @@
       <span>
         <target id="w72"/>
       </span>
+    <sentiment polarity="negative" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--gorra-->
     <term tid="t73" type="open" lemma="gorra" pos="N" morphofeat="NN">
@@ -664,6 +678,7 @@
       <span>
         <target id="w80"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--y-->
     <term tid="t81" type="open" lemma="y" pos="G" morphofeat="JJ">
@@ -847,6 +862,7 @@
       <span>
         <target id="w110"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--azul-->
     <term tid="t111" type="open" lemma="azul" pos="G" morphofeat="JJ">
@@ -859,6 +875,7 @@
       <span>
         <target id="w112"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--toda-->
     <term tid="t113" type="open" lemma="toda" pos="N" morphofeat="NN">
@@ -937,6 +954,7 @@
       <span>
         <target id="w125"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--al-->
     <term tid="t126" type="open" lemma="al" pos="G" morphofeat="JJ">
@@ -967,6 +985,7 @@
       <span>
         <target id="w130"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--de-->
     <term tid="t131" type="close" lemma="de" pos="P" morphofeat="IN">
@@ -1021,6 +1040,7 @@
       <span>
         <target id="w139"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--la-->
     <term tid="t140" type="close" lemma="la" pos="O" morphofeat="FW">
@@ -1033,6 +1053,7 @@
       <span>
         <target id="w141"/>
       </span>
+      <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--de-->
     <term tid="t142" type="close" lemma="de" pos="O" morphofeat="FW">
@@ -1063,12 +1084,14 @@
       <span>
         <target id="w146"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--uso-->
     <term tid="t147" type="close" lemma="uso" pos="P" morphofeat="IN">
       <span>
         <target id="w147"/>
       </span>
+    <sentiment polarity="neutral" resource="EHU_general_lexicon_spanish"/>
     </term>
     <!--de-->
     <term tid="t148" type="close" lemma="de" pos="O" morphofeat="FW">

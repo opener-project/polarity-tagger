@@ -147,6 +147,7 @@
       <span>
         <target id="w13"/>
       </span>
+      <sentiment polarity="negative" resource="German_Polarity_Lexicon-Clematide_andKlenner2010"/>
     </term>
     <term lemma="noch" morphofeat="ADV" pos="A" tid="t14" type="open">
       <span>
