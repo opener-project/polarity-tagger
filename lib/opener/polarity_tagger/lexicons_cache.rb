@@ -15,10 +15,11 @@ module Opener
       end
 
       def [] **params
+        existing = @cache[params]
+        return existing if existing and existing.from > UPDATE_INTERVAL.ago
+
         synchronize do
-          existing = @cache[params]
-          break existing if existing and existing.from > UPDATE_INTERVAL.ago
-          @cache[params] = cache_update existing, **params
+          @cache[params] = cache_update @cache[params], **params
         end
       end
       alias_method :get, :[]
