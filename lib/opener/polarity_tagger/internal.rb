@@ -22,6 +22,7 @@ module Opener
 
         @cache_keys = params[:cache_keys] ||= {}
         @cache_keys.merge! lang: kaf.language
+        @cache_keys = @cache_keys.except :property_type
         @map = kaf.map = CACHE[**@cache_keys].lexicons
 
         raise Opener::Core::UnsupportedLanguageError, kaf.language if @map.blank?
