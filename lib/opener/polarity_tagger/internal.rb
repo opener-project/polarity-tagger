@@ -98,8 +98,8 @@ module Opener
         text  = terms.map{|t| t.text&.downcase }.join(' ')
 
         lexicons.each do |lexicon|
-          return lexicon if lemma =~ /^#{lexicon.lemma}($|\s)+/
-          return lexicon if text =~ /^#{lexicon.lemma}($|\s)+/
+          return lexicon if lemma =~ /^#{Regexp.escape(lexicon.lemma)}($|\s)+/
+          return lexicon if text =~ /^#{Regexp.escape(lexicon.lemma)}($|\s)+/
         end
         nil
       end
