@@ -26,6 +26,10 @@ module Opener
         @node.attr :pos
       end
 
+      def lexicon_id
+        @node.attr :lexicon_id
+      end
+
       def setPolarity attrs, polarity_pos
         #In case there is no pos info, we use the polarityPos
         @node[:pos] = polarity_pos if !pos and polarity_pos
