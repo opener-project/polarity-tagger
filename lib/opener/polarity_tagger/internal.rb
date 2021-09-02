@@ -22,6 +22,7 @@ module Opener
 
         @cache_keys = params[:cache_keys] ||= {}
         @cache_keys.merge! lang: kaf.language
+        @cache_keys[:contract_ids] = nil unless @cache_keys[:contract_ids]
         @cache_keys = @cache_keys.except :property_type
         @map = kaf.map = CACHE[**@cache_keys].lexicons
 
